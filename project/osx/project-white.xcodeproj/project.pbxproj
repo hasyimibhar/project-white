@@ -1,0 +1,385 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		1C54AB3F16773BC10094193A /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1C54AB3E16773BC10094193A /* Cocoa.framework */; };
+		1C54AB6816773C700094193A /* AllegroAcodec-5.0.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1C54AB5C16773C700094193A /* AllegroAcodec-5.0.framework */; };
+		1C54AB6916773C700094193A /* AllegroAudio-5.0.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1C54AB5D16773C700094193A /* AllegroAudio-5.0.framework */; };
+		1C54AB6A16773C700094193A /* AllegroColor-5.0.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1C54AB5E16773C700094193A /* AllegroColor-5.0.framework */; };
+		1C54AB6B16773C700094193A /* AllegroDialog-5.0.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1C54AB5F16773C700094193A /* AllegroDialog-5.0.framework */; };
+		1C54AB6C16773C700094193A /* AllegroFont-5.0.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1C54AB6016773C700094193A /* AllegroFont-5.0.framework */; };
+		1C54AB6D16773C700094193A /* AllegroImage-5.0.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1C54AB6116773C700094193A /* AllegroImage-5.0.framework */; };
+		1C54AB6E16773C700094193A /* AllegroMain-5.0.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1C54AB6216773C700094193A /* AllegroMain-5.0.framework */; };
+		1C54AB6F16773C700094193A /* AllegroMemfile-5.0.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1C54AB6316773C700094193A /* AllegroMemfile-5.0.framework */; };
+		1C54AB7016773C700094193A /* AllegroPhysfs-5.0.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1C54AB6416773C700094193A /* AllegroPhysfs-5.0.framework */; };
+		1C54AB7116773C700094193A /* AllegroPrimitives-5.0.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1C54AB6516773C700094193A /* AllegroPrimitives-5.0.framework */; };
+		1C54AB7216773C700094193A /* AllegroTTF-5.0.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1C54AB6616773C700094193A /* AllegroTTF-5.0.framework */; };
+		1C54AB7716773CD60094193A /* main.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 1C54AB7616773CD60094193A /* main.cpp */; };
+		1C54AB7A16773D470094193A /* Allegro-5.0.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1C54AB7916773D470094193A /* Allegro-5.0.framework */; };
+		1C54AB7B16773D960094193A /* Allegro-5.0.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = 1C54AB7916773D470094193A /* Allegro-5.0.framework */; };
+		1C54AB7C16773D960094193A /* AllegroAcodec-5.0.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = 1C54AB5C16773C700094193A /* AllegroAcodec-5.0.framework */; };
+		1C54AB7D16773D960094193A /* AllegroAudio-5.0.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = 1C54AB5D16773C700094193A /* AllegroAudio-5.0.framework */; };
+		1C54AB7E16773D960094193A /* AllegroColor-5.0.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = 1C54AB5E16773C700094193A /* AllegroColor-5.0.framework */; };
+		1C54AB7F16773D960094193A /* AllegroDialog-5.0.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = 1C54AB5F16773C700094193A /* AllegroDialog-5.0.framework */; };
+		1C54AB8016773D960094193A /* AllegroFont-5.0.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = 1C54AB6016773C700094193A /* AllegroFont-5.0.framework */; };
+		1C54AB8116773D960094193A /* AllegroImage-5.0.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = 1C54AB6116773C700094193A /* AllegroImage-5.0.framework */; };
+		1C54AB8216773D960094193A /* AllegroMain-5.0.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = 1C54AB6216773C700094193A /* AllegroMain-5.0.framework */; };
+		1C54AB8316773D960094193A /* AllegroMemfile-5.0.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = 1C54AB6316773C700094193A /* AllegroMemfile-5.0.framework */; };
+		1C54AB8416773D960094193A /* AllegroPhysfs-5.0.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = 1C54AB6416773C700094193A /* AllegroPhysfs-5.0.framework */; };
+		1C54AB8516773D960094193A /* AllegroPrimitives-5.0.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = 1C54AB6516773C700094193A /* AllegroPrimitives-5.0.framework */; };
+		1C54AB8616773D960094193A /* AllegroTTF-5.0.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = 1C54AB6616773C700094193A /* AllegroTTF-5.0.framework */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXCopyFilesBuildPhase section */
+		1C54AB5A16773BC80094193A /* CopyFiles */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 10;
+			files = (
+				1C54AB7B16773D960094193A /* Allegro-5.0.framework in CopyFiles */,
+				1C54AB7C16773D960094193A /* AllegroAcodec-5.0.framework in CopyFiles */,
+				1C54AB7D16773D960094193A /* AllegroAudio-5.0.framework in CopyFiles */,
+				1C54AB7E16773D960094193A /* AllegroColor-5.0.framework in CopyFiles */,
+				1C54AB7F16773D960094193A /* AllegroDialog-5.0.framework in CopyFiles */,
+				1C54AB8016773D960094193A /* AllegroFont-5.0.framework in CopyFiles */,
+				1C54AB8116773D960094193A /* AllegroImage-5.0.framework in CopyFiles */,
+				1C54AB8216773D960094193A /* AllegroMain-5.0.framework in CopyFiles */,
+				1C54AB8316773D960094193A /* AllegroMemfile-5.0.framework in CopyFiles */,
+				1C54AB8416773D960094193A /* AllegroPhysfs-5.0.framework in CopyFiles */,
+				1C54AB8516773D960094193A /* AllegroPrimitives-5.0.framework in CopyFiles */,
+				1C54AB8616773D960094193A /* AllegroTTF-5.0.framework in CopyFiles */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
+
+/* Begin PBXFileReference section */
+		1C54AB3A16773BC10094193A /* project-white.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "project-white.app"; sourceTree = BUILT_PRODUCTS_DIR; };
+		1C54AB3E16773BC10094193A /* Cocoa.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Cocoa.framework; path = System/Library/Frameworks/Cocoa.framework; sourceTree = SDKROOT; };
+		1C54AB4116773BC10094193A /* AppKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AppKit.framework; path = System/Library/Frameworks/AppKit.framework; sourceTree = SDKROOT; };
+		1C54AB4216773BC10094193A /* CoreData.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreData.framework; path = System/Library/Frameworks/CoreData.framework; sourceTree = SDKROOT; };
+		1C54AB4316773BC10094193A /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
+		1C54AB4616773BC10094193A /* project-white-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "project-white-Info.plist"; sourceTree = "<group>"; };
+		1C54AB5C16773C700094193A /* AllegroAcodec-5.0.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = "AllegroAcodec-5.0.framework"; path = "/Library/Frameworks/AllegroAcodec-5.0.framework"; sourceTree = "<absolute>"; };
+		1C54AB5D16773C700094193A /* AllegroAudio-5.0.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = "AllegroAudio-5.0.framework"; path = "/Library/Frameworks/AllegroAudio-5.0.framework"; sourceTree = "<absolute>"; };
+		1C54AB5E16773C700094193A /* AllegroColor-5.0.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = "AllegroColor-5.0.framework"; path = "/Library/Frameworks/AllegroColor-5.0.framework"; sourceTree = "<absolute>"; };
+		1C54AB5F16773C700094193A /* AllegroDialog-5.0.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = "AllegroDialog-5.0.framework"; path = "/Library/Frameworks/AllegroDialog-5.0.framework"; sourceTree = "<absolute>"; };
+		1C54AB6016773C700094193A /* AllegroFont-5.0.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = "AllegroFont-5.0.framework"; path = "/Library/Frameworks/AllegroFont-5.0.framework"; sourceTree = "<absolute>"; };
+		1C54AB6116773C700094193A /* AllegroImage-5.0.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = "AllegroImage-5.0.framework"; path = "/Library/Frameworks/AllegroImage-5.0.framework"; sourceTree = "<absolute>"; };
+		1C54AB6216773C700094193A /* AllegroMain-5.0.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = "AllegroMain-5.0.framework"; path = "/Library/Frameworks/AllegroMain-5.0.framework"; sourceTree = "<absolute>"; };
+		1C54AB6316773C700094193A /* AllegroMemfile-5.0.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = "AllegroMemfile-5.0.framework"; path = "/Library/Frameworks/AllegroMemfile-5.0.framework"; sourceTree = "<absolute>"; };
+		1C54AB6416773C700094193A /* AllegroPhysfs-5.0.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = "AllegroPhysfs-5.0.framework"; path = "/Library/Frameworks/AllegroPhysfs-5.0.framework"; sourceTree = "<absolute>"; };
+		1C54AB6516773C700094193A /* AllegroPrimitives-5.0.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = "AllegroPrimitives-5.0.framework"; path = "/Library/Frameworks/AllegroPrimitives-5.0.framework"; sourceTree = "<absolute>"; };
+		1C54AB6616773C700094193A /* AllegroTTF-5.0.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = "AllegroTTF-5.0.framework"; path = "/Library/Frameworks/AllegroTTF-5.0.framework"; sourceTree = "<absolute>"; };
+		1C54AB7616773CD60094193A /* main.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = main.cpp; sourceTree = "<group>"; };
+		1C54AB7916773D470094193A /* Allegro-5.0.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = "Allegro-5.0.framework"; path = "/Library/Frameworks/Allegro-5.0.framework"; sourceTree = "<absolute>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		1C54AB3716773BC10094193A /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				1C54AB7A16773D470094193A /* Allegro-5.0.framework in Frameworks */,
+				1C54AB6816773C700094193A /* AllegroAcodec-5.0.framework in Frameworks */,
+				1C54AB6916773C700094193A /* AllegroAudio-5.0.framework in Frameworks */,
+				1C54AB6A16773C700094193A /* AllegroColor-5.0.framework in Frameworks */,
+				1C54AB6B16773C700094193A /* AllegroDialog-5.0.framework in Frameworks */,
+				1C54AB6C16773C700094193A /* AllegroFont-5.0.framework in Frameworks */,
+				1C54AB6D16773C700094193A /* AllegroImage-5.0.framework in Frameworks */,
+				1C54AB6E16773C700094193A /* AllegroMain-5.0.framework in Frameworks */,
+				1C54AB6F16773C700094193A /* AllegroMemfile-5.0.framework in Frameworks */,
+				1C54AB7016773C700094193A /* AllegroPhysfs-5.0.framework in Frameworks */,
+				1C54AB7116773C700094193A /* AllegroPrimitives-5.0.framework in Frameworks */,
+				1C54AB7216773C700094193A /* AllegroTTF-5.0.framework in Frameworks */,
+				1C54AB3F16773BC10094193A /* Cocoa.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		1C54AB2A16773B520094193A = {
+			isa = PBXGroup;
+			children = (
+				1C54AB4416773BC10094193A /* project-white */,
+				1C54AB3D16773BC10094193A /* Frameworks */,
+				1C54AB3B16773BC10094193A /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		1C54AB3B16773BC10094193A /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				1C54AB3A16773BC10094193A /* project-white.app */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		1C54AB3D16773BC10094193A /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				1C54AB7916773D470094193A /* Allegro-5.0.framework */,
+				1C54AB5C16773C700094193A /* AllegroAcodec-5.0.framework */,
+				1C54AB5D16773C700094193A /* AllegroAudio-5.0.framework */,
+				1C54AB5E16773C700094193A /* AllegroColor-5.0.framework */,
+				1C54AB5F16773C700094193A /* AllegroDialog-5.0.framework */,
+				1C54AB6016773C700094193A /* AllegroFont-5.0.framework */,
+				1C54AB6116773C700094193A /* AllegroImage-5.0.framework */,
+				1C54AB6216773C700094193A /* AllegroMain-5.0.framework */,
+				1C54AB6316773C700094193A /* AllegroMemfile-5.0.framework */,
+				1C54AB6416773C700094193A /* AllegroPhysfs-5.0.framework */,
+				1C54AB6516773C700094193A /* AllegroPrimitives-5.0.framework */,
+				1C54AB6616773C700094193A /* AllegroTTF-5.0.framework */,
+				1C54AB3E16773BC10094193A /* Cocoa.framework */,
+				1C54AB4016773BC10094193A /* Other Frameworks */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		1C54AB4016773BC10094193A /* Other Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				1C54AB4116773BC10094193A /* AppKit.framework */,
+				1C54AB4216773BC10094193A /* CoreData.framework */,
+				1C54AB4316773BC10094193A /* Foundation.framework */,
+			);
+			name = "Other Frameworks";
+			sourceTree = "<group>";
+		};
+		1C54AB4416773BC10094193A /* project-white */ = {
+			isa = PBXGroup;
+			children = (
+				1C54AB7816773CDB0094193A /* include */,
+				1C54AB7516773CD60094193A /* src */,
+				1C54AB4516773BC10094193A /* Supporting Files */,
+			);
+			path = "project-white";
+			sourceTree = "<group>";
+		};
+		1C54AB4516773BC10094193A /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				1C54AB4616773BC10094193A /* project-white-Info.plist */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		1C54AB7516773CD60094193A /* src */ = {
+			isa = PBXGroup;
+			children = (
+				1C54AB7616773CD60094193A /* main.cpp */,
+			);
+			name = src;
+			path = ../../../src;
+			sourceTree = "<group>";
+		};
+		1C54AB7816773CDB0094193A /* include */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = include;
+			path = ../../../include;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		1C54AB3916773BC10094193A /* project-white */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 1C54AB5816773BC10094193A /* Build configuration list for PBXNativeTarget "project-white" */;
+			buildPhases = (
+				1C54AB3616773BC10094193A /* Sources */,
+				1C54AB3716773BC10094193A /* Frameworks */,
+				1C54AB3816773BC10094193A /* Resources */,
+				1C54AB5A16773BC80094193A /* CopyFiles */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = "project-white";
+			productName = "project-white";
+			productReference = 1C54AB3A16773BC10094193A /* project-white.app */;
+			productType = "com.apple.product-type.application";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		1C54AB2C16773B520094193A /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastUpgradeCheck = 0450;
+			};
+			buildConfigurationList = 1C54AB2F16773B520094193A /* Build configuration list for PBXProject "project-white" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+			);
+			mainGroup = 1C54AB2A16773B520094193A;
+			productRefGroup = 1C54AB3B16773BC10094193A /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				1C54AB3916773BC10094193A /* project-white */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		1C54AB3816773BC10094193A /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		1C54AB3616773BC10094193A /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				1C54AB7716773CD60094193A /* main.cpp in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin XCBuildConfiguration section */
+		1C54AB3116773B520094193A /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+			};
+			name = Debug;
+		};
+		1C54AB3216773B520094193A /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+			};
+			name = Release;
+		};
+		1C54AB5616773BC10094193A /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ARCHS = "$(ARCHS_STANDARD_64_BIT)";
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COMBINE_HIDPI_IMAGES = YES;
+				COPY_PHASE_STRIP = NO;
+				FRAMEWORK_SEARCH_PATHS = /Library/Frameworks;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_ENABLE_OBJC_EXCEPTIONS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				HEADER_SEARCH_PATHS = (
+					"/Library/Frameworks/Allegro-5.0.framework/Versions/Current/Headers",
+					"/Library/Frameworks/AllegroMain-5.0.framework/Versions/Current/Headers",
+					"/Library/Frameworks/AllegroAcodec-5.0.framework/Versions/Current/Headers",
+					"/Library/Frameworks/AllegroAudio-5.0.framework/Versions/Current/Headers",
+					"/Library/Frameworks/AllegroColor-5.0.framework/Versions/Current/Headers",
+					"/Library/Frameworks/AllegroDialog-5.0.framework/Versions/Current/Headers",
+					"/Library/Frameworks/AllegroFont-5.0.framework/Versions/Current/Headers",
+					"/Library/Frameworks/AllegroImage-5.0.framework/Versions/Current/Headers",
+					"/Library/Frameworks/AllegroMemfile-5.0.framework/Versions/Current/Headers",
+					"/Library/Frameworks/AllegroPhysfs-5.0.framework/Versions/Current/Headers",
+					"/Library/Frameworks/AllegroPrimitives-5.0.framework/Versions/Current/Headers",
+					"/Library/Frameworks/AllegroTTF-5.0.framework/Versions/Current/Headers",
+				);
+				INFOPLIST_FILE = "project-white/project-white-Info.plist";
+				MACOSX_DEPLOYMENT_TARGET = 10.7;
+				ONLY_ACTIVE_ARCH = YES;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = macosx;
+				WRAPPER_EXTENSION = app;
+			};
+			name = Debug;
+		};
+		1C54AB5716773BC10094193A /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ARCHS = "$(ARCHS_STANDARD_64_BIT)";
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COMBINE_HIDPI_IMAGES = YES;
+				COPY_PHASE_STRIP = YES;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				FRAMEWORK_SEARCH_PATHS = /Library/Frameworks;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_ENABLE_OBJC_EXCEPTIONS = YES;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				HEADER_SEARCH_PATHS = (
+					"/Library/Frameworks/Allegro-5.0.framework/Versions/Current/Headers",
+					"/Library/Frameworks/AllegroMain-5.0.framework/Versions/Current/Headers",
+					"/Library/Frameworks/AllegroAcodec-5.0.framework/Versions/Current/Headers",
+					"/Library/Frameworks/AllegroAudio-5.0.framework/Versions/Current/Headers",
+					"/Library/Frameworks/AllegroColor-5.0.framework/Versions/Current/Headers",
+					"/Library/Frameworks/AllegroDialog-5.0.framework/Versions/Current/Headers",
+					"/Library/Frameworks/AllegroFont-5.0.framework/Versions/Current/Headers",
+					"/Library/Frameworks/AllegroImage-5.0.framework/Versions/Current/Headers",
+					"/Library/Frameworks/AllegroMemfile-5.0.framework/Versions/Current/Headers",
+					"/Library/Frameworks/AllegroPhysfs-5.0.framework/Versions/Current/Headers",
+					"/Library/Frameworks/AllegroPrimitives-5.0.framework/Versions/Current/Headers",
+					"/Library/Frameworks/AllegroTTF-5.0.framework/Versions/Current/Headers",
+				);
+				INFOPLIST_FILE = "project-white/project-white-Info.plist";
+				MACOSX_DEPLOYMENT_TARGET = 10.7;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = macosx;
+				WRAPPER_EXTENSION = app;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		1C54AB2F16773B520094193A /* Build configuration list for PBXProject "project-white" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				1C54AB3116773B520094193A /* Debug */,
+				1C54AB3216773B520094193A /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		1C54AB5816773BC10094193A /* Build configuration list for PBXNativeTarget "project-white" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				1C54AB5616773BC10094193A /* Debug */,
+				1C54AB5716773BC10094193A /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = 1C54AB2C16773B520094193A /* Project object */;
+}
