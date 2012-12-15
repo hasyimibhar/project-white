@@ -9,6 +9,7 @@
 #include "Application.h"
 #include "Elves.h"
 #include <allegro5/allegro.h>
+#include <stdexcept>
 
 const std::string   Application::DefaultWindowTitle     = "project-white";
 const int           Application::DefaultWindowWidth     = 640;
