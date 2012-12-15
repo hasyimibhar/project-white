@@ -8,7 +8,7 @@
 
 #include "GameStateManager.h"
 #include "InputHandler.h"
-#include <cassert>
+#include "GameState.h"
 
 GameStateManager::GameStateManager() {
     
@@ -20,7 +20,7 @@ GameStateManager::~GameStateManager() {
 
 void GameStateManager::pushState(GameStatePtr gameState) {
     
-    gameState->onEnter();
+    gameState->onEnter(shared_from_this());
     gameStateList.push_back(gameState);
     
 }
@@ -28,7 +28,7 @@ void GameStateManager::pushState(GameStatePtr gameState) {
 void GameStateManager::changeState(GameStatePtr gameState) {
     
     for (auto state : gameStateList) {
-        state->onExit();
+        state->onExit(shared_from_this());
     }
     
     gameStateList.clear();
@@ -40,7 +40,7 @@ void GameStateManager::popState() {
     assert(gameStateList.size() > 0 && "There's no state to pop!");
     
     GameStatePtr topState = getTopState();
-    topState->onExit();
+    topState->onExit(shared_from_this());
     
     gameStateList.pop_back();
 }
@@ -48,7 +48,7 @@ void GameStateManager::popState() {
 void GameStateManager::update(float dt) {
     
     for (auto state : gameStateList) {
-        state->update(dt);
+        state->update(shared_from_this(), dt);
     }
     
 }
@@ -56,11 +56,11 @@ void GameStateManager::update(float dt) {
 void GameStateManager::draw(ALLEGRO_DISPLAY *display) {
     
     for (auto state : gameStateList) {
-        state->draw(display);
+        state->draw(shared_from_this(), display);
     }
     
 }
 
 void GameStateManager::handleInput(InputHandlerPtr inputHandler) {
-    getTopState()->handleInput(inputHandler);
+    getTopState()->handleInput(shared_from_this(), inputHandler);
 }

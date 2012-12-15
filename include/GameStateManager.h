@@ -10,7 +10,19 @@
 #define project_white_GameStateManager_h
 
 #include <list>
-#include "GameState.h"
+#include <memory>
+#include <cassert>
+
+struct ALLEGRO_DISPLAY;
+
+class IGameStateManager;
+typedef std::shared_ptr<IGameStateManager> GameStateManagerPtr;
+
+class IGameState;
+typedef std::shared_ptr<IGameState> GameStatePtr;
+
+class InputHandler;
+typedef std::shared_ptr<InputHandler> InputHandlerPtr;
 
 class IGameStateManager {
 public:
@@ -25,11 +37,12 @@ public:
     virtual void handleInput(InputHandlerPtr inputHandler) = 0;
     
     virtual GameStatePtr getTopState() const = 0;
+    virtual unsigned int getActiveStateCount() const = 0;
 };
 
 typedef std::list<GameStatePtr> GameStateList;
 
-class GameStateManager : public IGameStateManager {
+class GameStateManager : public IGameStateManager, public std::enable_shared_from_this<GameStateManager> {
     
 private:
     GameStateList gameStateList;
@@ -47,7 +60,12 @@ public:
     void handleInput(InputHandlerPtr inputHandler);
     
     GameStatePtr getTopState() const {
+        assert(gameStateList.size() > 0 && "There's no states!");
         return gameStateList.back();
+    }
+    
+    unsigned int getActiveStateCount() const {
+        return (unsigned int)gameStateList.size();
     }
 };
 

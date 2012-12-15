@@ -13,16 +13,19 @@
 
 class PlayState : public IGameState, public std::enable_shared_from_this<PlayState> {
 
+private:
+    float x;
+    
 public:
     PlayState();
     ~PlayState();
     
-    void onEnter();
-    void onExit();
+    void onEnter(GameStateManagerPtr manager);
+    void onExit(GameStateManagerPtr manager);
     
-    void handleInput(InputHandlerPtr inputHandler);
-    void update(float dt);
-    void draw(ALLEGRO_DISPLAY *display);
+    void handleInput(GameStateManagerPtr manager, InputHandlerPtr inputHandler);
+    void update(GameStateManagerPtr manager, float dt);
+    void draw(GameStateManagerPtr manager, ALLEGRO_DISPLAY *display);
     
     static GameStatePtr GetInstance();
 };

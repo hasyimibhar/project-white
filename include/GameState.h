@@ -11,23 +11,17 @@
 
 #include <memory>
 #include "InputHandler.h"
-
-struct ALLEGRO_DISPLAY;
-class IGameState;
-typedef std::shared_ptr<IGameState> GameStatePtr;
-
-class InputHandler;
-typedef std::shared_ptr<InputHandler> InputHandlerPtr;
+#include "GameStateManager.h"
 
 class IGameState {
 public:
     virtual ~IGameState() {}
-    virtual void onEnter() = 0;
-    virtual void onExit() = 0;
+    virtual void onEnter(GameStateManagerPtr manager) = 0;
+    virtual void onExit(GameStateManagerPtr manager) = 0;
     
-    virtual void update(float dt) = 0;
-    virtual void draw(ALLEGRO_DISPLAY *display) = 0;
-    virtual void handleInput(InputHandlerPtr inputHandler) = 0;
+    virtual void update(GameStateManagerPtr manager, float dt) = 0;
+    virtual void draw(GameStateManagerPtr manager, ALLEGRO_DISPLAY *display) = 0;
+    virtual void handleInput(GameStateManagerPtr manager, InputHandlerPtr inputHandler) = 0;
 };
 
 #endif

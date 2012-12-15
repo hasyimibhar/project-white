@@ -110,7 +110,7 @@ int Application::run() {
     bool shouldExit = false;
     al_start_timer(timer);
     
-    while (!shouldExit) {
+    while (!shouldExit && gameStateManager->getActiveStateCount() > 0) {
         
         //////////////////////////////////////////////////
         // Process all events
