@@ -38,12 +38,19 @@ public:
     void update(float dt) {
         if (!isOver()) {
             timeElapsed += dt;
+        } else {
+            timeElapsed = timeInterval;
         }
     }
     
     bool isOver() const {
         assert(isSet && "Timer is not set yet!");
-        return timeElapsed > timeInterval;
+        return timeElapsed >= timeInterval;
+    }
+    
+    float getNormalizedTime() const {
+        assert(isSet && "Timer is not set yet!");
+        return timeElapsed / timeInterval;
     }
 };
 

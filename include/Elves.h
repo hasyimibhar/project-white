@@ -29,4 +29,10 @@ std::string to_string(const T &t) {
     return ss.str();
 }
 
+template <typename T>
+T clamp(const T& value, const T& low, const T& high)
+{
+    return value < low ? low : (value > high ? high : value);
+}
+
 #endif

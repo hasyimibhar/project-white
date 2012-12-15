@@ -7,11 +7,11 @@
 //
 
 #include "PlayState.h"
+#include "Interpolation.h"
 #include <allegro5/allegro_primitives.h>
 
 PlayState::PlayState() {
-    x = 50;
-    timer.setTimeInterval(5);
+    timer.setTimeInterval(5.0f);
 }
 
 PlayState::~PlayState() {
@@ -33,8 +33,6 @@ void PlayState::handleInput(
     
     if (inputHandler->isKeyPressed(ALLEGRO_KEY_ESCAPE)) {
         manager->popState();
-    } else if (inputHandler->isKeyDown(ALLEGRO_KEY_RIGHT)) {
-        x += 50 * dt;
     }
     
 }
@@ -48,14 +46,12 @@ void PlayState::update(
 void PlayState::draw(GameStateManagerPtr    manager,
                      ALLEGRO_DISPLAY        *display) {
     
-    ALLEGRO_COLOR color;
-    if (!timer.isOver()) {
-        color = al_map_rgb(255, 0, 0);
-    } else {
-        color = al_map_rgb(0, 255, 0);
-    }
-    
-    al_draw_filled_circle(x, 50, 20, color);
+    al_draw_filled_circle(Interpolation<float>::Exponential(timer.getNormalizedTime(), 50, 400, EaseInOut),
+                          50,
+                          20,
+                          al_map_rgb(Interpolation<unsigned char>::Exponential(timer.getNormalizedTime(), 255, 0, EaseInOut),
+                                     Interpolation<unsigned char>::Exponential(timer.getNormalizedTime(), 0, 255, EaseInOut),
+                                     0));
     
 }
 

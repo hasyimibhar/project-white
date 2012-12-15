@@ -15,7 +15,6 @@
 class PlayState : public IGameState, public std::enable_shared_from_this<PlayState> {
 
 private:
-    float x;
     DeltaTimer timer;
     
 public:
