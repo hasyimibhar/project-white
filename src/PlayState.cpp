@@ -11,6 +11,7 @@
 
 PlayState::PlayState() {
     x = 50;
+    timer.setTimeInterval(5);
 }
 
 PlayState::~PlayState() {
@@ -41,12 +42,20 @@ void PlayState::handleInput(
 void PlayState::update(
                        GameStateManagerPtr  manager,
                        float                dt) {
+    timer.update(dt);
 }
 
 void PlayState::draw(GameStateManagerPtr    manager,
                      ALLEGRO_DISPLAY        *display) {
     
-    al_draw_filled_circle(x, 50, 20, al_map_rgb(255, 0, 0));
+    ALLEGRO_COLOR color;
+    if (!timer.isOver()) {
+        color = al_map_rgb(255, 0, 0);
+    } else {
+        color = al_map_rgb(0, 255, 0);
+    }
+    
+    al_draw_filled_circle(x, 50, 20, color);
     
 }
 
