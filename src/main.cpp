@@ -1,10 +1,11 @@
 #include <allegro5/allegro.h>
+#include "Application.h"
 
 int main(int argc, char **argv) {
-    al_init();
-    al_create_display(640, 480);
-    al_clear_to_color(al_map_rgb_f(1, 1, 1));
-    al_flip_display();
-    al_rest(5.0);
+    
+    Application app (argc, argv, "data/config.ini");
+    app.run();
+    
     return 0;
+    
 }

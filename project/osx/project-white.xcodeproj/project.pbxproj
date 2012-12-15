@@ -33,6 +33,7 @@
 		1C54AB8416773D960094193A /* AllegroPhysfs-5.0.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = 1C54AB6416773C700094193A /* AllegroPhysfs-5.0.framework */; };
 		1C54AB8516773D960094193A /* AllegroPrimitives-5.0.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = 1C54AB6516773C700094193A /* AllegroPrimitives-5.0.framework */; };
 		1C54AB8616773D960094193A /* AllegroTTF-5.0.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = 1C54AB6616773C700094193A /* AllegroTTF-5.0.framework */; };
+		1C54AB8A167743540094193A /* Application.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 1C54AB88167743540094193A /* Application.cpp */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -79,6 +80,9 @@
 		1C54AB6616773C700094193A /* AllegroTTF-5.0.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = "AllegroTTF-5.0.framework"; path = "/Library/Frameworks/AllegroTTF-5.0.framework"; sourceTree = "<absolute>"; };
 		1C54AB7616773CD60094193A /* main.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = main.cpp; sourceTree = "<group>"; };
 		1C54AB7916773D470094193A /* Allegro-5.0.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = "Allegro-5.0.framework"; path = "/Library/Frameworks/Allegro-5.0.framework"; sourceTree = "<absolute>"; };
+		1C54AB87167742D50094193A /* Application.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Application.h; sourceTree = "<group>"; };
+		1C54AB88167743540094193A /* Application.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Application.cpp; sourceTree = "<group>"; };
+		1C54AB8B167747550094193A /* Elves.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Elves.h; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -175,6 +179,7 @@
 			isa = PBXGroup;
 			children = (
 				1C54AB7616773CD60094193A /* main.cpp */,
+				1C54AB88167743540094193A /* Application.cpp */,
 			);
 			name = src;
 			path = ../../../src;
@@ -183,6 +188,8 @@
 		1C54AB7816773CDB0094193A /* include */ = {
 			isa = PBXGroup;
 			children = (
+				1C54AB87167742D50094193A /* Application.h */,
+				1C54AB8B167747550094193A /* Elves.h */,
 			);
 			name = include;
 			path = ../../../include;
@@ -199,6 +206,7 @@
 				1C54AB3716773BC10094193A /* Frameworks */,
 				1C54AB3816773BC10094193A /* Resources */,
 				1C54AB5A16773BC80094193A /* CopyFiles */,
+				1C54AB9016774A050094193A /* ShellScript */,
 			);
 			buildRules = (
 			);
@@ -244,12 +252,29 @@
 		};
 /* End PBXResourcesBuildPhase section */
 
+/* Begin PBXShellScriptBuildPhase section */
+		1C54AB9016774A050094193A /* ShellScript */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "echo \"Copying data files...\"\nmkdir -p $BUILT_PRODUCTS_DIR/data\ncp $PROJECT_DIR/../../data/* $BUILT_PRODUCTS_DIR/data";
+		};
+/* End PBXShellScriptBuildPhase section */
+
 /* Begin PBXSourcesBuildPhase section */
 		1C54AB3616773BC10094193A /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 				1C54AB7716773CD60094193A /* main.cpp in Sources */,
+				1C54AB8A167743540094193A /* Application.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -273,7 +298,7 @@
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				ARCHS = "$(ARCHS_STANDARD_64_BIT)";
-				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LANGUAGE_STANDARD = "c++0x";
 				CLANG_CXX_LIBRARY = "libc++";
 				CLANG_WARN_EMPTY_BODY = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
@@ -322,7 +347,7 @@
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				ARCHS = "$(ARCHS_STANDARD_64_BIT)";
-				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LANGUAGE_STANDARD = "c++0x";
 				CLANG_CXX_LIBRARY = "libc++";
 				CLANG_WARN_EMPTY_BODY = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
