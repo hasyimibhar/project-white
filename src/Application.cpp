@@ -130,7 +130,7 @@ int Application::run() {
                     al_get_keyboard_state(&keyboardState);
                     inputHandler->updateKeyboardState(&keyboardState);
                     
-                    gameStateManager->handleInput(inputHandler);
+                    gameStateManager->handleInput(inputHandler, 1.0f / FPS);
                     gameStateManager->update(1.0f / FPS);
                     break;
                     

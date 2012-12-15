@@ -23,7 +23,7 @@ public:
     void onEnter(GameStateManagerPtr manager);
     void onExit(GameStateManagerPtr manager);
     
-    void handleInput(GameStateManagerPtr manager, InputHandlerPtr inputHandler);
+    void handleInput(GameStateManagerPtr manager, InputHandlerPtr inputHandler, float dt);
     void update(GameStateManagerPtr manager, float dt);
     void draw(GameStateManagerPtr manager, ALLEGRO_DISPLAY *display);
     

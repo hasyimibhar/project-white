@@ -61,6 +61,6 @@ void GameStateManager::draw(ALLEGRO_DISPLAY *display) {
     
 }
 
-void GameStateManager::handleInput(InputHandlerPtr inputHandler) {
-    getTopState()->handleInput(shared_from_this(), inputHandler);
+void GameStateManager::handleInput(InputHandlerPtr inputHandler, float dt) {
+    getTopState()->handleInput(shared_from_this(), inputHandler, dt);
 }

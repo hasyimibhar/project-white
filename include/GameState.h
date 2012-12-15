@@ -19,9 +19,9 @@ public:
     virtual void onEnter(GameStateManagerPtr manager) = 0;
     virtual void onExit(GameStateManagerPtr manager) = 0;
     
+    virtual void handleInput(GameStateManagerPtr manager, InputHandlerPtr inputHandler, float dt) = 0;
     virtual void update(GameStateManagerPtr manager, float dt) = 0;
     virtual void draw(GameStateManagerPtr manager, ALLEGRO_DISPLAY *display) = 0;
-    virtual void handleInput(GameStateManagerPtr manager, InputHandlerPtr inputHandler) = 0;
 };
 
 #endif

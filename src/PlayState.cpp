@@ -27,10 +27,13 @@ void PlayState::onExit(GameStateManagerPtr manager) {
 
 void PlayState::handleInput(
                             GameStateManagerPtr manager,
-                            InputHandlerPtr     inputHandler) {
+                            InputHandlerPtr     inputHandler,
+                            float               dt) {
     
     if (inputHandler->isKeyPressed(ALLEGRO_KEY_ESCAPE)) {
         manager->popState();
+    } else if (inputHandler->isKeyDown(ALLEGRO_KEY_RIGHT)) {
+        x += 50 * dt;
     }
     
 }
@@ -38,7 +41,6 @@ void PlayState::handleInput(
 void PlayState::update(
                        GameStateManagerPtr  manager,
                        float                dt) {
-    x += 50 * dt;
 }
 
 void PlayState::draw(GameStateManagerPtr    manager,
