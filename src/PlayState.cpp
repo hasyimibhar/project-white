@@ -25,6 +25,14 @@ void PlayState::onExit() {
     
 }
 
+void PlayState::handleInput(InputHandlerPtr inputHandler) {
+    
+    if (inputHandler->isKeyPressed(ALLEGRO_KEY_ESCAPE)) {
+        
+    }
+    
+}
+
 void PlayState::update(float dt) {
     
 }

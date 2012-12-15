@@ -7,6 +7,7 @@
 //
 
 #include "GameStateManager.h"
+#include "InputHandler.h"
 #include <cassert>
 
 GameStateManager::GameStateManager() {
@@ -58,4 +59,8 @@ void GameStateManager::draw(ALLEGRO_DISPLAY *display) {
         state->draw(display);
     }
     
+}
+
+void GameStateManager::handleInput(InputHandlerPtr inputHandler) {
+    getTopState()->handleInput(inputHandler);
 }

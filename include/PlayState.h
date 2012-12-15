@@ -20,6 +20,7 @@ public:
     void onEnter();
     void onExit();
     
+    void handleInput(InputHandlerPtr inputHandler);
     void update(float dt);
     void draw(ALLEGRO_DISPLAY *display);
     

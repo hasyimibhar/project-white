@@ -10,6 +10,8 @@
 #include "Elves.h"
 #include "GameStateManager.h"
 #include "PlayState.h"
+#include "InputHandler.h"
+
 #include <allegro5/allegro.h>
 #include <allegro5/allegro_primitives.h>
 #include <stdexcept>
@@ -17,6 +19,7 @@
 const std::string   Application::DefaultWindowTitle     = "project-white";
 const int           Application::DefaultWindowWidth     = 640;
 const int           Application::DefaultWindowHeight    = 480;
+const float         Application::FPS                    = 60.0f;
 
 Application::Application(int                argc,
                          char               **argv,
@@ -81,12 +84,14 @@ Application::Application(int                argc,
         al_register_event_source(eventQueue, al_get_mouse_event_source());
     }
     
-    timer = al_create_timer(1.0f / 60.0f);
+    timer = al_create_timer(1.0f / FPS);
     if (timer == NULL) {
         throw std::runtime_error("Unable to initialize timer!");
     } else {
         al_register_event_source(eventQueue, al_get_timer_event_source(timer));
     }
+    
+    inputHandler = std::make_shared<InputHandler>();
     
     gameStateManager = std::make_shared<GameStateManager>();
     gameStateManager->changeState(PlayState::GetInstance());
@@ -121,7 +126,12 @@ int Application::run() {
                 ////////////////////////////////////////
                 // Update
                 case ALLEGRO_EVENT_TIMER:
-                    gameStateManager->update(1.0f / 60.0f);
+                    ALLEGRO_KEYBOARD_STATE keyboardState;
+                    al_get_keyboard_state(&keyboardState);
+                    inputHandler->updateKeyboardState(&keyboardState);
+                    
+                    gameStateManager->handleInput(inputHandler);
+                    gameStateManager->update(1.0f / FPS);
                     break;
                     
                 default:

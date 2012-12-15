@@ -22,6 +22,7 @@ public:
     
     virtual void update(float dt) = 0;
     virtual void draw(ALLEGRO_DISPLAY *display) = 0;
+    virtual void handleInput(InputHandlerPtr inputHandler) = 0;
     
     virtual GameStatePtr getTopState() const = 0;
 };
@@ -43,6 +44,7 @@ public:
     
     void update(float dt);
     void draw(ALLEGRO_DISPLAY *display);
+    void handleInput(InputHandlerPtr inputHandler);
     
     GameStatePtr getTopState() const {
         return gameStateList.back();
