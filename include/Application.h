@@ -10,15 +10,22 @@
 #define project_white_Application_h
 
 #include <string>
+#include <memory>
 
 struct ALLEGRO_DISPLAY;
 struct ALLEGRO_EVENT_QUEUE;
+struct ALLEGRO_TIMER;
+
+class IGameStateManager;
+typedef std::shared_ptr<IGameStateManager> GameStateManagerPtr;
 
 class Application {
     
 private:
-    ALLEGRO_DISPLAY *display;
-    ALLEGRO_EVENT_QUEUE *eventQueue;
+    ALLEGRO_DISPLAY         *display;
+    ALLEGRO_EVENT_QUEUE     *eventQueue;
+    ALLEGRO_TIMER           *timer;
+    GameStateManagerPtr     gameStateManager;
 
 public:
     static const std::string DefaultWindowTitle;

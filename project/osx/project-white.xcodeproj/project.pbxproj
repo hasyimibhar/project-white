@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		1C01A661167C242000B49A3F /* GameStateManager.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 1C01A660167C242000B49A3F /* GameStateManager.cpp */; };
+		1C01A66A167C2A3300B49A3F /* PlayState.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 1C01A669167C2A3300B49A3F /* PlayState.cpp */; };
 		1C54AB3F16773BC10094193A /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1C54AB3E16773BC10094193A /* Cocoa.framework */; };
 		1C54AB6816773C700094193A /* AllegroAcodec-5.0.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1C54AB5C16773C700094193A /* AllegroAcodec-5.0.framework */; };
 		1C54AB6916773C700094193A /* AllegroAudio-5.0.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1C54AB5D16773C700094193A /* AllegroAudio-5.0.framework */; };
@@ -61,6 +63,11 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		1C01A65D167C230300B49A3F /* GameState.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = GameState.h; sourceTree = "<group>"; };
+		1C01A65F167C234800B49A3F /* GameStateManager.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = GameStateManager.h; sourceTree = "<group>"; };
+		1C01A660167C242000B49A3F /* GameStateManager.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = GameStateManager.cpp; sourceTree = "<group>"; };
+		1C01A666167C2A1700B49A3F /* PlayState.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PlayState.h; sourceTree = "<group>"; };
+		1C01A669167C2A3300B49A3F /* PlayState.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = PlayState.cpp; sourceTree = "<group>"; };
 		1C54AB3A16773BC10094193A /* project-white.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "project-white.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		1C54AB3E16773BC10094193A /* Cocoa.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Cocoa.framework; path = System/Library/Frameworks/Cocoa.framework; sourceTree = SDKROOT; };
 		1C54AB4116773BC10094193A /* AppKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AppKit.framework; path = System/Library/Frameworks/AppKit.framework; sourceTree = SDKROOT; };
@@ -180,6 +187,8 @@
 			children = (
 				1C54AB7616773CD60094193A /* main.cpp */,
 				1C54AB88167743540094193A /* Application.cpp */,
+				1C01A660167C242000B49A3F /* GameStateManager.cpp */,
+				1C01A669167C2A3300B49A3F /* PlayState.cpp */,
 			);
 			name = src;
 			path = ../../../src;
@@ -190,6 +199,9 @@
 			children = (
 				1C54AB87167742D50094193A /* Application.h */,
 				1C54AB8B167747550094193A /* Elves.h */,
+				1C01A65D167C230300B49A3F /* GameState.h */,
+				1C01A65F167C234800B49A3F /* GameStateManager.h */,
+				1C01A666167C2A1700B49A3F /* PlayState.h */,
 			);
 			name = include;
 			path = ../../../include;
@@ -275,6 +287,8 @@
 			files = (
 				1C54AB7716773CD60094193A /* main.cpp in Sources */,
 				1C54AB8A167743540094193A /* Application.cpp in Sources */,
+				1C01A661167C242000B49A3F /* GameStateManager.cpp in Sources */,
+				1C01A66A167C2A3300B49A3F /* PlayState.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -403,6 +417,7 @@
 				1C54AB5716773BC10094193A /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};

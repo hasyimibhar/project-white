@@ -8,7 +8,10 @@
 
 #include "Application.h"
 #include "Elves.h"
+#include "GameStateManager.h"
+#include "PlayState.h"
 #include <allegro5/allegro.h>
+#include <allegro5/allegro_primitives.h>
 #include <stdexcept>
 
 const std::string   Application::DefaultWindowTitle     = "project-white";
@@ -20,6 +23,7 @@ Application::Application(int                argc,
                          const std::string  &configFilename) {
     
     al_init();
+    al_init_primitives_addon();
     
     std::string windowTitle;
     int windowWidth, windowHeight;
@@ -76,6 +80,16 @@ Application::Application(int                argc,
         al_register_event_source(eventQueue, al_get_keyboard_event_source());
         al_register_event_source(eventQueue, al_get_mouse_event_source());
     }
+    
+    timer = al_create_timer(1.0f / 60.0f);
+    if (timer == NULL) {
+        throw std::runtime_error("Unable to initialize timer!");
+    } else {
+        al_register_event_source(eventQueue, al_get_timer_event_source(timer));
+    }
+    
+    gameStateManager = std::make_shared<GameStateManager>();
+    gameStateManager->changeState(PlayState::GetInstance());
 }
 
 Application::~Application() {
@@ -89,6 +103,7 @@ Application::~Application() {
 int Application::run() {
     
     bool shouldExit = false;
+    al_start_timer(timer);
     
     while (!shouldExit) {
         
@@ -103,10 +118,11 @@ int Application::run() {
                     shouldExit = true;
                     break;
                     
-                case ALLEGRO_EVENT_KEY_DOWN:
-                    if (event.keyboard.keycode == ALLEGRO_KEY_ESCAPE) {
-                        shouldExit = true;
-                    }
+                ////////////////////////////////////////
+                // Update
+                case ALLEGRO_EVENT_TIMER:
+                    gameStateManager->update(1.0f / 60.0f);
+                    break;
                     
                 default:
                     break;
@@ -114,7 +130,14 @@ int Application::run() {
             
         }
         
+        ////////////////////////////////////////////////
+        // Draw 
+        al_clear_to_color(al_map_rgb(255, 255, 255));
+        gameStateManager->draw(display);
+        al_flip_display();
     }
+    
+    al_stop_timer(timer);
     
     return 0;
 }
