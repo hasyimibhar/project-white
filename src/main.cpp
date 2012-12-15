@@ -3,8 +3,9 @@
 
 int main(int argc, char **argv) {
     
-    Application app (argc, argv, "data/config.ini");
-    app.run();
+    ApplicationPtr app = Application::GetInstance();
+    app->init(argc, argv, "data/config.ini");
+    app->run();
     
     return 0;
     

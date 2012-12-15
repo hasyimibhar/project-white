@@ -21,15 +21,27 @@ const int           Application::DefaultWindowWidth     = 640;
 const int           Application::DefaultWindowHeight    = 480;
 const float         Application::FPS                    = 60.0f;
 
-Application::Application(int                argc,
-                         char               **argv,
-                         const std::string  &configFilename) {
+Application::Application() {
+    
+}
+
+Application::~Application() {
+    
+    al_destroy_timer(timer);
+    al_destroy_event_queue(eventQueue);
+    al_destroy_display(display);
+    al_uninstall_system();
+    
+}
+
+void Application::init(int                argc,
+                       char               **argv,
+                       const std::string  &configFilename) {
+    
+    assert(!al_is_system_installed() && "Don't call init twice!");
     
     al_init();
     al_init_primitives_addon();
-    
-    std::string windowTitle;
-    int windowWidth, windowHeight;
     
     // Use default values by default (duh)
     windowTitle     = DefaultWindowTitle;
@@ -43,7 +55,7 @@ Application::Application(int                argc,
         if (configFile == NULL) {
             throw std::runtime_error("Config file is missing!");
         } else {
-        
+            
             if (al_get_config_value(configFile, "window", "title")) {
                 windowTitle = std::string(al_get_config_value(configFile, "window", "title"));
             } else {
@@ -62,6 +74,7 @@ Application::Application(int                argc,
     
     al_set_new_display_flags(ALLEGRO_WINDOWED);
     al_set_new_display_option(ALLEGRO_SWAP_METHOD, 2, ALLEGRO_REQUIRE);
+    al_set_new_display_option(ALLEGRO_VSYNC, 1, ALLEGRO_REQUIRE);
     display = al_create_display(windowWidth, windowHeight);
     
     if (display == NULL) {
@@ -95,14 +108,6 @@ Application::Application(int                argc,
     
     gameStateManager = std::make_shared<GameStateManager>();
     gameStateManager->changeState(PlayState::GetInstance());
-}
-
-Application::~Application() {
-    
-    al_destroy_event_queue(eventQueue);
-    al_destroy_display(display);
-    al_uninstall_system();
-    
 }
 
 int Application::run() {
@@ -150,4 +155,9 @@ int Application::run() {
     al_stop_timer(timer);
     
     return 0;
+}
+
+ApplicationPtr Application::GetInstance() {
+    static ApplicationPtr application = std::make_shared<Application>();
+    return application;
 }

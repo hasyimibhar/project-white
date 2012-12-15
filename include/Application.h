@@ -33,6 +33,9 @@ private:
     ALLEGRO_TIMER           *timer;
     GameStateManagerPtr     gameStateManager;
     InputHandlerPtr         inputHandler;
+    
+    std::string             windowTitle;
+    int                     windowWidth, windowHeight;
 
 public:
     static const std::string DefaultWindowTitle;
@@ -40,10 +43,25 @@ public:
     static const int DefaultWindowHeight;
     static const float FPS;
     
-    Application(int argc, char **argv, const std::string &configFilename = "");
+    Application();
     ~Application();
     
+    void init(int argc, char **argv, const std::string &configFilename = "");
     int run();
+    
+    std::string getWindowTitle() const {
+        return windowTitle;
+    }
+    
+    int getWindowWidth() const {
+        return windowWidth;
+    }
+    
+    int getWindowHeight() const {
+        return windowHeight;
+    }
+    
+    static ApplicationPtr GetInstance();
 };
 
 #endif
