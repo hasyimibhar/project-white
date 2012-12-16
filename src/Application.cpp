@@ -34,14 +34,24 @@ Application::~Application() {
     
 }
 
+// I'm dumb!
+int DummyExitFunction(void (*stuff)(void)) {
+    return 0;
+}
+
 void Application::init(int                argc,
                        char               **argv,
                        const std::string  &configFilename) {
     
     assert(!al_is_system_installed() && "Don't call init twice!");
     
-    al_init();
-    al_init_primitives_addon();
+    if (!al_install_system(ALLEGRO_VERSION_INT, DummyExitFunction)) {
+        throw std::runtime_error("Cannot initialize Allegro!");
+    }
+    
+    if (!al_init_primitives_addon()) {
+        throw std::runtime_error("Cannot initialize primitives addon!");
+    }
     
     // Use default values by default (duh)
     windowTitle     = DefaultWindowTitle;
