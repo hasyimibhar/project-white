@@ -10,6 +10,7 @@
 #define project_white_MathTypes_h
 
 #include "Vector2.h"
+#include "Rect.h"
 #include <utility>
 
 typedef std::pair<float, float> Size;

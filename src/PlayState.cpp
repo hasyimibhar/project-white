@@ -50,10 +50,6 @@ void PlayState::handleInput(
     
     if (inputHandler->isKeyPressed(ALLEGRO_KEY_ESCAPE)) {
         exit(manager);
-    } else if (inputHandler->isKeyPressed(ALLEGRO_KEY_LEFT)) {
-        camera->moveBy(Vector2(100, 0));
-    } else if (inputHandler->isKeyPressed(ALLEGRO_KEY_RIGHT)) {
-        camera->moveBy(Vector2(-100, 0));
     }
     
     world->handleInput(inputHandler, dt);

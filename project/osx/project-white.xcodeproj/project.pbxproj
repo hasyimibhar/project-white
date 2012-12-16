@@ -83,6 +83,8 @@
 		1C2C5921167E033B00A897B1 /* MathTypes.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = MathTypes.cpp; sourceTree = "<group>"; };
 		1C2C592C167E156D00A897B1 /* Camera.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Camera.h; sourceTree = "<group>"; };
 		1C2C592D167E15B600A897B1 /* Camera.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Camera.cpp; sourceTree = "<group>"; };
+		1C2C592F167E1FE700A897B1 /* Entity.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Entity.h; sourceTree = "<group>"; };
+		1C2C5930167E208F00A897B1 /* Rect.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Rect.h; sourceTree = "<group>"; };
 		1C54AB3A16773BC10094193A /* project-white.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "project-white.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		1C54AB3E16773BC10094193A /* Cocoa.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Cocoa.framework; path = System/Library/Frameworks/Cocoa.framework; sourceTree = SDKROOT; };
 		1C54AB4116773BC10094193A /* AppKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AppKit.framework; path = System/Library/Frameworks/AppKit.framework; sourceTree = SDKROOT; };
@@ -226,8 +228,10 @@
 				1C01A66F167C6BAE00B49A3F /* Interpolation.h */,
 				1C2C591B167DF17800A897B1 /* World.h */,
 				1C2C591D167DF39800A897B1 /* Vector2.h */,
+				1C2C5930167E208F00A897B1 /* Rect.h */,
 				1C2C5920167E009D00A897B1 /* MathTypes.h */,
 				1C2C592C167E156D00A897B1 /* Camera.h */,
+				1C2C592F167E1FE700A897B1 /* Entity.h */,
 			);
 			name = include;
 			path = ../../../include;
