@@ -13,6 +13,7 @@
 		1C2C591F167DFFAB00A897B1 /* World.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 1C2C591E167DFFAB00A897B1 /* World.cpp */; };
 		1C2C5922167E033B00A897B1 /* MathTypes.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 1C2C5921167E033B00A897B1 /* MathTypes.cpp */; };
 		1C2C592E167E15B600A897B1 /* Camera.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 1C2C592D167E15B600A897B1 /* Camera.cpp */; };
+		1C2C5933167E26AF00A897B1 /* Character.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 1C2C5932167E26AF00A897B1 /* Character.cpp */; };
 		1C54AB3F16773BC10094193A /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1C54AB3E16773BC10094193A /* Cocoa.framework */; };
 		1C54AB6816773C700094193A /* AllegroAcodec-5.0.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1C54AB5C16773C700094193A /* AllegroAcodec-5.0.framework */; };
 		1C54AB6916773C700094193A /* AllegroAudio-5.0.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1C54AB5D16773C700094193A /* AllegroAudio-5.0.framework */; };
@@ -85,6 +86,8 @@
 		1C2C592D167E15B600A897B1 /* Camera.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Camera.cpp; sourceTree = "<group>"; };
 		1C2C592F167E1FE700A897B1 /* Entity.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Entity.h; sourceTree = "<group>"; };
 		1C2C5930167E208F00A897B1 /* Rect.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Rect.h; sourceTree = "<group>"; };
+		1C2C5931167E269A00A897B1 /* Character.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Character.h; sourceTree = "<group>"; };
+		1C2C5932167E26AF00A897B1 /* Character.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Character.cpp; sourceTree = "<group>"; };
 		1C54AB3A16773BC10094193A /* project-white.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "project-white.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		1C54AB3E16773BC10094193A /* Cocoa.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Cocoa.framework; path = System/Library/Frameworks/Cocoa.framework; sourceTree = SDKROOT; };
 		1C54AB4116773BC10094193A /* AppKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AppKit.framework; path = System/Library/Frameworks/AppKit.framework; sourceTree = SDKROOT; };
@@ -210,6 +213,7 @@
 				1C2C591E167DFFAB00A897B1 /* World.cpp */,
 				1C2C5921167E033B00A897B1 /* MathTypes.cpp */,
 				1C2C592D167E15B600A897B1 /* Camera.cpp */,
+				1C2C5932167E26AF00A897B1 /* Character.cpp */,
 			);
 			name = src;
 			path = ../../../src;
@@ -232,6 +236,7 @@
 				1C2C5920167E009D00A897B1 /* MathTypes.h */,
 				1C2C592C167E156D00A897B1 /* Camera.h */,
 				1C2C592F167E1FE700A897B1 /* Entity.h */,
+				1C2C5931167E269A00A897B1 /* Character.h */,
 			);
 			name = include;
 			path = ../../../include;
@@ -323,6 +328,7 @@
 				1C2C591F167DFFAB00A897B1 /* World.cpp in Sources */,
 				1C2C5922167E033B00A897B1 /* MathTypes.cpp in Sources */,
 				1C2C592E167E15B600A897B1 /* Camera.cpp in Sources */,
+				1C2C5933167E26AF00A897B1 /* Character.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -16,4 +16,6 @@
 typedef std::pair<float, float> Size;
 Size MakeSize(float width, float height);
 
+Rect OffsetRect(const Rect &r, const Vector2 &offset);
+
 #endif

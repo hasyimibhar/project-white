@@ -48,6 +48,8 @@ namespace AllegroFighters {
         Vector2 getPosition() const {
             return position;
         }
+        
+        Vector2 convertToViewCoordinate(const Vector2 &p) const;
     };
     
 }

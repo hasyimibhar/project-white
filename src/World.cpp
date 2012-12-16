@@ -9,6 +9,7 @@
 #include "World.h"
 #include "InputHandler.h"
 #include "Entity.h"
+#include "Camera.h"
 
 #include <allegro5/allegro.h>
 #include <algorithm>
@@ -34,6 +35,7 @@ void World::handleInput(InputHandlerPtr inputHandler, float dt) {
 }
 
 void World::update(float dt) {
+    
     processQueuedEntities();
     
     for (auto entity : activeEntityList) {
@@ -50,22 +52,24 @@ void World::processQueuedEntities() {
     deadEntityList.clear();
     
     for (auto newEntity : newEntityList) {
+        newEntity->setWorld(shared_from_this());
         activeEntityList.push_back(newEntity);
         newEntity->onAdd();
     }
     newEntityList.clear();
 }
 
-void World::draw(ALLEGRO_DISPLAY *display) {
+void World::draw(ALLEGRO_DISPLAY *display, CameraPtr camera) {
     
     for (auto entity : activeEntityList) {
-        entity->draw(display);
+        entity->draw(display, camera);
     }
     
 }
 
 void World::addEntity(EntityPtr entity) {
     assert(entity != nullptr);
+    assert(entity->getWorld() == nullptr);
     assert(std::find(newEntityList.begin(), newEntityList.end(), entity) == newEntityList.end() && "This entity is being added (queued)!");
     assert(std::find(activeEntityList.begin(), activeEntityList.end(), entity) == activeEntityList.end() && "This entity has already been added!");
     
@@ -74,6 +78,7 @@ void World::addEntity(EntityPtr entity) {
 
 void World::removeEntity(EntityPtr entity) {
     assert(entity != nullptr);
+    assert(entity->getWorld() == shared_from_this());
     assert(std::find(deadEntityList.begin(), deadEntityList.end(), entity) == deadEntityList.end() && "This entity is being removed (queued)!");
     assert(std::find(activeEntityList.begin(), activeEntityList.end(), entity) != activeEntityList.end() && "This entity doesn't exist in this world!");
     

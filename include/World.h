@@ -20,13 +20,16 @@ typedef std::shared_ptr<InputHandler> InputHandlerPtr;
 
 namespace AllegroFighters {
     
+    class Camera;
+    typedef std::shared_ptr<Camera> CameraPtr;
+    
     class IEntity;
     typedef std::shared_ptr<IEntity> EntityPtr;
     
     typedef std::list<EntityPtr> EntityList;
  
     // The world where the fighters rumble!
-    class World {
+    class World : public std::enable_shared_from_this<World> {
     private:
         const Size size;
         EntityList activeEntityList, newEntityList, deadEntityList;
@@ -41,7 +44,7 @@ namespace AllegroFighters {
         
         void handleInput(InputHandlerPtr inputHandler, float dt);
         void update(float dt);
-        void draw(ALLEGRO_DISPLAY *display);
+        void draw(ALLEGRO_DISPLAY *display, CameraPtr camera);
         
         void addEntity(EntityPtr entity);
         void removeEntity(EntityPtr entity);

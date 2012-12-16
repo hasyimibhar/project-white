@@ -10,6 +10,7 @@
 #include "Elves.h"
 #include "World.h"
 #include "Interpolation.h"
+#include "Entity.h"
 
 #include <cassert>
 
@@ -48,4 +49,8 @@ void Camera::moveBy(const Vector2 &delta) {
 void Camera::update(float dt) {
     moveTimer.update(dt);
     this->position = Interpolation<Vector2>::Quadratic(moveTimer.getNormalizedTime(), start, target, EaseOut);
+}
+
+Vector2 Camera::convertToViewCoordinate(const Vector2 &p) const {
+    return p + Vector2(size.first / 2, 0) + position;
 }

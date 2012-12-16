@@ -11,6 +11,7 @@
 #include "Application.h"
 #include "World.h"
 #include "Camera.h"
+#include "Character.h"
 
 #include <allegro5/allegro_primitives.h>
 #include <allegro5/allegro_image.h>
@@ -36,6 +37,13 @@ void PlayState::onEnter(GameStateManagerPtr manager) {
         throw std::runtime_error("Missing texture!");
     }
     
+    CharacterPtr character1 = std::make_shared<Character>();
+    character1->setPosition(Vector2(-150, 200));
+    world->addEntity(character1);
+    
+    CharacterPtr character2 = std::make_shared<Character>();
+    character2->setPosition(Vector2(150, 200));
+    world->addEntity(character2);
 }
 
 void PlayState::onExit(GameStateManagerPtr manager) {
@@ -50,6 +58,10 @@ void PlayState::handleInput(
     
     if (inputHandler->isKeyPressed(ALLEGRO_KEY_ESCAPE)) {
         exit(manager);
+    } else if (inputHandler->isKeyPressed(ALLEGRO_KEY_LEFT)) {
+        camera->moveBy(Vector2(100, 0));
+    } else if (inputHandler->isKeyPressed(ALLEGRO_KEY_RIGHT)) {
+        camera->moveBy(Vector2(-100, 0));
     }
     
     world->handleInput(inputHandler, dt);
@@ -66,7 +78,7 @@ void PlayState::draw(GameStateManagerPtr    manager,
                      ALLEGRO_DISPLAY        *display) {
     
     al_draw_bitmap(background, (Application::GetInstance()->getWindowWidth() - 1600) / 2 + camera->getPosition().x, 0, 0);
-    world->draw(display);
+    world->draw(display, camera);
     
     if (currentState == TransitionIn) {
         al_draw_filled_rectangle(0,
