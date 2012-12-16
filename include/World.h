@@ -21,16 +21,22 @@ namespace AllegroFighters {
  
     // The world where the fighters rumble!
     class World {
+    private:
+        const Size size;
+        
     public:
         static const float FloorY;
-        static const Size Size;
         
-        World();
+        World(const Size &size);
         ~World();
         
         void handleInput(InputHandlerPtr inputHandler, float dt);
         void update(float dt);
         void draw(ALLEGRO_DISPLAY *display);
+        
+        Size getSize() const {
+            return size;
+        }
     };
 
 }

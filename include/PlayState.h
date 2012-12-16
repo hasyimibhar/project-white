@@ -16,14 +16,17 @@ struct ALLEGRO_BITMAP;
 
 namespace AllegroFighters {
     class World;
+    class Camera;
 }
 
 typedef std::shared_ptr<AllegroFighters::World> WorldPtr;
+typedef std::shared_ptr<AllegroFighters::Camera> CameraPtr;
 
 class PlayState : public BaseGameState {
 
 private:
     WorldPtr        world;
+    CameraPtr       camera;
     ALLEGRO_BITMAP  *background;
     
 public:
