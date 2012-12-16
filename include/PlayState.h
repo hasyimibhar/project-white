@@ -12,11 +12,16 @@
 #include "GameState.h"
 #include "DeltaTimer.h"
 
+namespace AllegroFighters {
+    class World;
+}
+
+typedef std::shared_ptr<AllegroFighters::World> WorldPtr;
+
 class PlayState : public BaseGameState {
 
 private:
-    DeltaTimer timer;
-    DeltaTimer testTimer;
+    WorldPtr world;
     
 public:
     PlayState();

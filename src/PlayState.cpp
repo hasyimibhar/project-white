@@ -10,8 +10,11 @@
 #include "Interpolation.h"
 #include <allegro5/allegro_primitives.h>
 #include "Application.h"
+#include "World.h"
 
-PlayState::PlayState() {
+using namespace AllegroFighters;
+
+PlayState::PlayState() : world(nullptr) {
     transitionInInterval = 2.0f;
     transitionOutInterval = 2.0f;
 }
@@ -21,12 +24,11 @@ PlayState::~PlayState() {
 }
 
 void PlayState::onEnter(GameStateManagerPtr manager) {
-    timer.setTimeInterval(2.0f);
-    testTimer.setTimeInterval(5.0f);
+    world = std::make_shared<World>();
 }
 
 void PlayState::onExit(GameStateManagerPtr manager) {
-    
+    world.reset();
 }
 
 void PlayState::handleInput(
@@ -38,28 +40,19 @@ void PlayState::handleInput(
         exit(manager);
     }
     
+    world->handleInput(inputHandler, dt);
 }
 
 void PlayState::update(
                        GameStateManagerPtr  manager,
                        float                dt) {
-    timer.update(dt);
-    testTimer.update(dt);
-    
-//    if (testTimer.isOver() && currentState == Active) {
-//        manager->changeState(PlayState::GetInstance());
-//    }
+    world->update(dt);
 }
 
 void PlayState::draw(GameStateManagerPtr    manager,
                      ALLEGRO_DISPLAY        *display) {
     
-    al_draw_filled_circle(Interpolation<float>::Exponential(timer.getNormalizedTime(), 50, 400, EaseInOut),
-                          50,
-                          20,
-                          al_map_rgb(Interpolation<unsigned char>::Exponential(timer.getNormalizedTime(), 255, 0, EaseInOut),
-                                     Interpolation<unsigned char>::Exponential(timer.getNormalizedTime(), 0, 255, EaseInOut),
-                                     0));
+    world->draw(display);
     
     if (currentState == TransitionIn) {
         al_draw_filled_rectangle(0,
@@ -74,7 +67,6 @@ void PlayState::draw(GameStateManagerPtr    manager,
                                  Application::GetInstance()->getWindowHeight(),
                                  al_map_rgba_f(0, 0, 0, Interpolation<float>::Linear(transitionTimer.getNormalizedTime(), 0, 1)));
     }
-    
 }
 
 GameStatePtr PlayState::GetInstance() {
