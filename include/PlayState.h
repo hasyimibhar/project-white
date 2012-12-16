@@ -12,10 +12,11 @@
 #include "GameState.h"
 #include "DeltaTimer.h"
 
-class PlayState : public IGameState, public std::enable_shared_from_this<PlayState> {
+class PlayState : public BaseGameState {
 
 private:
     DeltaTimer timer;
+    DeltaTimer testTimer;
     
 public:
     PlayState();

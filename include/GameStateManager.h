@@ -36,6 +36,9 @@ public:
     virtual void update(float dt) = 0;
     virtual void draw(ALLEGRO_DISPLAY *display) = 0;
     
+    virtual void _setCurrentState(GameStatePtr gameState) = 0;
+    virtual void _removeState(GameStatePtr gameState) = 0;
+    
     virtual GameStatePtr getTopState() const = 0;
     virtual unsigned int getActiveStateCount() const = 0;
 };
@@ -46,6 +49,7 @@ class GameStateManager : public IGameStateManager, public std::enable_shared_fro
     
 private:
     GameStateList gameStateList;
+    GameStatePtr queuedState;
     
 public:
     GameStateManager();
@@ -59,6 +63,8 @@ public:
     void update(float dt);
     void draw(ALLEGRO_DISPLAY *display);
     
+    void _onStateTransitionOutOver(GameStatePtr gameState);
+    
     GameStatePtr getTopState() const {
         assert(gameStateList.size() > 0 && "There's no states!");
         return gameStateList.back();
@@ -67,6 +73,9 @@ public:
     unsigned int getActiveStateCount() const {
         return (unsigned int)gameStateList.size();
     }
+    
+    void _setCurrentState(GameStatePtr gameState);
+    void _removeState(GameStatePtr gameState);
 };
 
 #endif

@@ -58,7 +58,6 @@ void Application::init(int                argc,
             
             if (al_get_config_value(configFile, "window", "title")) {
                 windowTitle = std::string(al_get_config_value(configFile, "window", "title"));
-            } else {
             }
             
             if (al_get_config_value(configFile, "window", "width") &&
@@ -107,7 +106,7 @@ void Application::init(int                argc,
     inputHandler = std::make_shared<InputHandler>();
     
     gameStateManager = std::make_shared<GameStateManager>();
-    gameStateManager->changeState(PlayState::GetInstance());
+    gameStateManager->_setCurrentState(PlayState::GetInstance());
 }
 
 int Application::run() {

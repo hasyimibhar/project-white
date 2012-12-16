@@ -9,8 +9,9 @@
 #include "GameStateManager.h"
 #include "InputHandler.h"
 #include "GameState.h"
+#include <algorithm>
 
-GameStateManager::GameStateManager() {
+GameStateManager::GameStateManager() : queuedState(nullptr) {
     
 }
 
@@ -20,7 +21,7 @@ GameStateManager::~GameStateManager() {
 
 void GameStateManager::pushState(GameStatePtr gameState) {
     
-    gameState->onEnter(shared_from_this());
+    gameState->_onEnter(shared_from_this());
     gameStateList.push_back(gameState);
     
 }
@@ -28,29 +29,44 @@ void GameStateManager::pushState(GameStatePtr gameState) {
 void GameStateManager::changeState(GameStatePtr gameState) {
     
     for (auto state : gameStateList) {
-        state->onExit(shared_from_this());
+        state->_onExit(shared_from_this());
     }
     
-    gameStateList.clear();
-    pushState(gameState);
-    
+    queuedState = gameState;
 }
 
 void GameStateManager::popState() {
     assert(gameStateList.size() > 0 && "There's no state to pop!");
     
     GameStatePtr topState = getTopState();
-    topState->onExit(shared_from_this());
-    
-    gameStateList.pop_back();
+    topState->_onExit(shared_from_this());
+}
+
+void GameStateManager::_setCurrentState(GameStatePtr gameState) {
+    assert(gameStateList.empty());
+    pushState(gameState);
+}
+
+void GameStateManager::_removeState(GameStatePtr gameState) {
+    assert(std::find(gameStateList.begin(), gameStateList.end(), gameState) != gameStateList.end());
+    gameStateList.remove(gameState);
 }
 
 void GameStateManager::update(float dt) {
     
     for (auto state : gameStateList) {
-        state->update(shared_from_this(), dt);
+        state->_update(shared_from_this(), dt);
     }
     
+    if (queuedState != nullptr && gameStateList.empty()) {
+        pushState(queuedState);
+        queuedState = nullptr;
+    }
+    
+}
+
+void GameStateManager::_onStateTransitionOutOver(GameStatePtr gameState) {
+    gameStateList.remove(gameState);
 }
 
 void GameStateManager::draw(ALLEGRO_DISPLAY *display) {

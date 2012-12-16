@@ -12,6 +12,8 @@
 #include "Application.h"
 
 PlayState::PlayState() {
+    transitionInInterval = 2.0f;
+    transitionOutInterval = 2.0f;
 }
 
 PlayState::~PlayState() {
@@ -20,6 +22,7 @@ PlayState::~PlayState() {
 
 void PlayState::onEnter(GameStateManagerPtr manager) {
     timer.setTimeInterval(2.0f);
+    testTimer.setTimeInterval(5.0f);
 }
 
 void PlayState::onExit(GameStateManagerPtr manager) {
@@ -32,7 +35,7 @@ void PlayState::handleInput(
                             float               dt) {
     
     if (inputHandler->isKeyPressed(ALLEGRO_KEY_ESCAPE)) {
-        manager->popState();
+        exit(manager);
     }
     
 }
@@ -41,10 +44,11 @@ void PlayState::update(
                        GameStateManagerPtr  manager,
                        float                dt) {
     timer.update(dt);
+    testTimer.update(dt);
     
-    if (timer.isOver()) {
-        manager->changeState(PlayState::GetInstance());
-    }
+//    if (testTimer.isOver() && currentState == Active) {
+//        manager->changeState(PlayState::GetInstance());
+//    }
 }
 
 void PlayState::draw(GameStateManagerPtr    manager,
@@ -57,11 +61,19 @@ void PlayState::draw(GameStateManagerPtr    manager,
                                      Interpolation<unsigned char>::Exponential(timer.getNormalizedTime(), 0, 255, EaseInOut),
                                      0));
     
-    al_draw_filled_rectangle(0,
-                             0,
-                             Application::GetInstance()->getWindowWidth(),
-                             Application::GetInstance()->getWindowHeight(),
-                             al_map_rgba_f(0, 0, 0, Interpolation<float>::Linear(timer.getNormalizedTime(), 1, 0)));
+    if (currentState == TransitionIn) {
+        al_draw_filled_rectangle(0,
+                                 0,
+                                 Application::GetInstance()->getWindowWidth(),
+                                 Application::GetInstance()->getWindowHeight(),
+                                 al_map_rgba_f(0, 0, 0, Interpolation<float>::Linear(transitionTimer.getNormalizedTime(), 1, 0)));
+    } else if (currentState == TransitionOut) {
+        al_draw_filled_rectangle(0,
+                                 0,
+                                 Application::GetInstance()->getWindowWidth(),
+                                 Application::GetInstance()->getWindowHeight(),
+                                 al_map_rgba_f(0, 0, 0, Interpolation<float>::Linear(transitionTimer.getNormalizedTime(), 0, 1)));
+    }
     
 }
 
