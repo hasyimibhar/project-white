@@ -12,6 +12,8 @@
 #include "GameState.h"
 #include "DeltaTimer.h"
 
+struct ALLEGRO_BITMAP;
+
 namespace AllegroFighters {
     class World;
 }
@@ -21,7 +23,8 @@ typedef std::shared_ptr<AllegroFighters::World> WorldPtr;
 class PlayState : public BaseGameState {
 
 private:
-    WorldPtr world;
+    WorldPtr        world;
+    ALLEGRO_BITMAP  *background;
     
 public:
     PlayState();

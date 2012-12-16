@@ -297,7 +297,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "echo \"Copying data files...\"\nmkdir -p $BUILT_PRODUCTS_DIR/data\ncp $PROJECT_DIR/../../data/* $BUILT_PRODUCTS_DIR/data";
+			shellScript = "echo \"Copying data files...\"\nmkdir -p $BUILT_PRODUCTS_DIR/data\ncp -r $PROJECT_DIR/../../data/* $BUILT_PRODUCTS_DIR/data";
 		};
 /* End PBXShellScriptBuildPhase section */
 

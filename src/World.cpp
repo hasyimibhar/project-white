@@ -13,7 +13,7 @@
 using namespace AllegroFighters;
 
 const float World::FloorY   = 500.0f;
-const Size  World::Size     = MakeSize(1024, 768);
+const Size  World::Size     = MakeSize(1600, 768);
 
 World::World() {
     

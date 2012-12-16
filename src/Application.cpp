@@ -14,6 +14,7 @@
 
 #include <allegro5/allegro.h>
 #include <allegro5/allegro_primitives.h>
+#include <allegro5/allegro_image.h>
 #include <stdexcept>
 
 const std::string   Application::DefaultWindowTitle     = "project-white";
@@ -42,6 +43,10 @@ void Application::init(int                argc,
     
     al_init();
     al_init_primitives_addon();
+    
+    if (!al_init_image_addon()) {
+        throw std::runtime_error("Cannot initialize image addon!");
+    }
     
     // Use default values by default (duh)
     windowTitle     = DefaultWindowTitle;

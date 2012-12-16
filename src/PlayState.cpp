@@ -8,9 +8,11 @@
 
 #include "PlayState.h"
 #include "Interpolation.h"
-#include <allegro5/allegro_primitives.h>
 #include "Application.h"
 #include "World.h"
+
+#include <allegro5/allegro_primitives.h>
+#include <allegro5/allegro_image.h>
 
 using namespace AllegroFighters;
 
@@ -24,10 +26,18 @@ PlayState::~PlayState() {
 }
 
 void PlayState::onEnter(GameStateManagerPtr manager) {
+    
     world = std::make_shared<World>();
+    
+    background = al_load_bitmap("./data/textures/backgrounds/01.png");
+    if (background == NULL) {
+        throw std::runtime_error("Missing texture!");
+    }
+    
 }
 
 void PlayState::onExit(GameStateManagerPtr manager) {
+    al_destroy_bitmap(background);
     world.reset();
 }
 
@@ -52,6 +62,7 @@ void PlayState::update(
 void PlayState::draw(GameStateManagerPtr    manager,
                      ALLEGRO_DISPLAY        *display) {
     
+    al_draw_bitmap(background, (Application::GetInstance()->getWindowWidth() - 1600) / 2, 0, 0);
     world->draw(display);
     
     if (currentState == TransitionIn) {
