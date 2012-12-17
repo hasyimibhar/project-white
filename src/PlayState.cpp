@@ -8,9 +8,12 @@
 
 #include "PlayState.h"
 #include "Interpolation.h"
-#include <allegro5/allegro_primitives.h>
 #include "Application.h"
 #include "GameControls.h"
+#include "ComboRecognition.h"
+
+#include <allegro5/allegro_primitives.h>
+#include <iostream>
 
 using namespace AllegroFighters;
 
@@ -23,15 +26,30 @@ PlayState::~PlayState() {
     
 }
 
+void Test(const std::string &comboName) {
+    std::cout << "Combo triggered!" << std::endl;
+}
+
 void PlayState::onEnter(GameStateManagerPtr manager) {
     controlsManager = std::make_shared<ControlsManager>("./data/config.ini");
+    comboManager = std::make_shared<ComboManager>(Application::GetInstance()->getInputHandler());
+    
+    ComboPtr combo1 = comboManager->addCombo(
+        std::make_shared<Combo>("Combo1", 0.2f)
+           ->key(controlsManager->getKey(GameCommandMoveDown))
+           ->key(controlsManager->getKey(GameCommandMoveLeft))
+           ->key(controlsManager->getKey(GameCommandMoveRight))
+           ->key(controlsManager->getKey(GameCommandPunch))
+           ->key(controlsManager->getKey(GameCommandKick))
+                           );
+    combo1->addDelegate(&Test);
     
     timer.setTimeInterval(2.0f);
     testTimer.setTimeInterval(5.0f);
 }
 
 void PlayState::onExit(GameStateManagerPtr manager) {
-    
+
 }
 
 void PlayState::handleInput(
@@ -40,8 +58,6 @@ void PlayState::handleInput(
                             float               dt) {
     
     if (inputHandler->isKeyPressed(ALLEGRO_KEY_ESCAPE)) {
-        exit(manager);
-    } else if (controlsManager->isKeyPressed(inputHandler, GameCommandPunch)) {
         exit(manager);
     }
     
@@ -52,10 +68,7 @@ void PlayState::update(
                        float                dt) {
     timer.update(dt);
     testTimer.update(dt);
-    
-//    if (testTimer.isOver() && currentState == Active) {
-//        manager->changeState(PlayState::GetInstance());
-//    }
+    comboManager->update(dt);
 }
 
 void PlayState::draw(GameStateManagerPtr    manager,

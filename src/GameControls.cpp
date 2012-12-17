@@ -7,7 +7,6 @@
 //
 
 #include "GameControls.h"
-#include <cassert>
 #include <allegro5/allegro.h>
 #include "Elves.h"
 
@@ -24,6 +23,10 @@ std::string AllegroFighters::GetGameCommandString(GameCommand command) {
             
         case GameCommandMoveRight:
             commandString = "moveright";
+            break;
+            
+        case GameCommandMoveDown:
+            commandString = "movedown";
             break;
             
         case GameCommandJump:
@@ -49,17 +52,19 @@ std::string AllegroFighters::GetGameCommandString(GameCommand command) {
 
 const KeyboardKey ControlsManager::DefaultMoveLeftKey = ALLEGRO_KEY_LEFT;
 const KeyboardKey ControlsManager::DefaultMoveRightKey = ALLEGRO_KEY_RIGHT;
+const KeyboardKey ControlsManager::DefaultMoveDownKey = ALLEGRO_KEY_DOWN;
 const KeyboardKey ControlsManager::DefaultJumpKey = ALLEGRO_KEY_UP;
 const KeyboardKey ControlsManager::DefaultPunchKey = ALLEGRO_KEY_X;
 const KeyboardKey ControlsManager::DefaultKickKey = ALLEGRO_KEY_Z;
 
 ControlsManager::ControlsManager(const std::string &configFilename)
 {
-    bindCommand(GameCommandMoveLeft, DefaultMoveLeftKey);
-    bindCommand(GameCommandMoveRight, DefaultMoveRightKey);
-    bindCommand(GameCommandJump, DefaultJumpKey);
-    bindCommand(GameCommandPunch, DefaultPunchKey);
-    bindCommand(GameCommandKick, DefaultKickKey);
+    bindCommand(GameCommandMoveLeft,    DefaultMoveLeftKey);
+    bindCommand(GameCommandMoveRight,   DefaultMoveRightKey);
+    bindCommand(GameCommandMoveDown,    DefaultMoveDownKey);
+    bindCommand(GameCommandJump,        DefaultJumpKey);
+    bindCommand(GameCommandPunch,       DefaultPunchKey);
+    bindCommand(GameCommandKick,        DefaultKickKey);
     
     if (!configFilename.empty()) {
         
@@ -71,6 +76,7 @@ ControlsManager::ControlsManager(const std::string &configFilename)
             const std::string commandStringArray[] = {
                 GetGameCommandString(GameCommandMoveLeft),
                 GetGameCommandString(GameCommandMoveRight),
+                GetGameCommandString(GameCommandMoveDown),
                 GetGameCommandString(GameCommandJump),
                 GetGameCommandString(GameCommandPunch),
                 GetGameCommandString(GameCommandKick)

@@ -11,6 +11,8 @@
 
 #include <map>
 #include <string>
+#include <cassert>
+#include <algorithm>
 #include "InputHandler.h"
 
 typedef std::shared_ptr<InputHandler> InputHandlerPtr;
@@ -20,6 +22,7 @@ namespace AllegroFighters {
     enum GameCommand {
         GameCommandMoveLeft = 0,
         GameCommandMoveRight,
+        GameCommandMoveDown,
         GameCommandJump,
         GameCommandPunch,
         GameCommandKick
@@ -36,6 +39,7 @@ namespace AllegroFighters {
     public:
         static const KeyboardKey DefaultMoveLeftKey;
         static const KeyboardKey DefaultMoveRightKey;
+        static const KeyboardKey DefaultMoveDownKey;
         static const KeyboardKey DefaultJumpKey;
         static const KeyboardKey DefaultPunchKey;
         static const KeyboardKey DefaultKickKey;
@@ -44,6 +48,19 @@ namespace AllegroFighters {
         
         void bindCommand(GameCommand command, KeyboardKey key);
         void unbindCommand(GameCommand command);
+        
+        KeyboardKey getKey(GameCommand command) const {
+            assert(commandKeyMap.find(command) != commandKeyMap.end());
+            return commandKeyMap.at(command);
+        }
+        
+        GameCommand getCommand(KeyboardKey key) const {
+            auto result = std::find_if(commandKeyMap.begin(), commandKeyMap.end(), [key](std::pair<GameCommand, KeyboardKey> v) {
+                return v.second == key;
+            });
+            assert(result != commandKeyMap.end());
+            return result->first;
+        }
         
         bool isKeyDown(InputHandlerPtr inputHandler, GameCommand command) const;
         bool isKeyUp(InputHandlerPtr inputHandler, GameCommand command) const;

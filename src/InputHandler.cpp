@@ -42,3 +42,31 @@ bool InputHandler::isKeyPressed(const KeyboardKey key) const {
 bool InputHandler::isKeyReleased(const KeyboardKey key) const {
     return !currentKeyboardState[(int)key] && oldKeyboardState[(int)key];
 }
+
+void InputHandler::addKeyDownDelegate(OnKeyEvent delegate) {
+    keyDownDelegateList.push_back(delegate);
+}
+
+void InputHandler::addKeyUpDelegate(OnKeyEvent delegate) {
+    keyUpDelegateList.push_back(delegate);
+}
+
+void InputHandler::removeKeyDownDelegate(OnKeyEvent delegate) {
+    keyDownDelegateList.remove(delegate);
+}
+
+void InputHandler::removeKeyUpDelegate(OnKeyEvent delegate) {
+    keyUpDelegateList.remove(delegate);
+}
+
+void InputHandler::onKeyDown(KeyboardKey key) {
+    for (auto d : keyDownDelegateList) {
+        d(key);
+    }
+}
+    
+void InputHandler::onKeyUp(KeyboardKey key) {
+    for (auto d : keyUpDelegateList) {
+        d(key);
+    }
+}

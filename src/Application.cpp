@@ -137,6 +137,14 @@ int Application::run() {
                     shouldExit = true;
                     break;
                     
+                case ALLEGRO_EVENT_KEY_DOWN:
+                    inputHandler->onKeyDown(event.keyboard.keycode);
+                    break;
+                    
+                case ALLEGRO_EVENT_KEY_UP:
+                    inputHandler->onKeyUp(event.keyboard.keycode);
+                    break;
+                    
                 ////////////////////////////////////////
                 // Update
                 case ALLEGRO_EVENT_TIMER:
