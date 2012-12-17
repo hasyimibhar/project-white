@@ -8,16 +8,25 @@
 
 #include "PlayState.h"
 #include "Interpolation.h"
+#include <allegro5/allegro_primitives.h>
 #include "Application.h"
 #include "GameControls.h"
 #include "ComboRecognition.h"
 
+#include "World.h"
+#include "Camera.h"
+#include "Character.h"
 #include <allegro5/allegro_primitives.h>
 #include <iostream>
 
 using namespace AllegroFighters;
 
-PlayState::PlayState() {
+#include <allegro5/allegro_primitives.h>
+#include <allegro5/allegro_image.h>
+
+using namespace AllegroFighters;
+
+PlayState::PlayState() : world(nullptr) {
     transitionInInterval = 2.0f;
     transitionOutInterval = 2.0f;
 }
@@ -44,12 +53,27 @@ void PlayState::onEnter(GameStateManagerPtr manager) {
                            );
     combo1->addDelegate(&Test);
     
-    timer.setTimeInterval(2.0f);
-    testTimer.setTimeInterval(5.0f);
+    world = std::make_shared<World>(MakeSize(1600, 600));
+    camera = std::make_shared<Camera>(world, MakeSize(Application::GetInstance()->getWindowWidth(), Application::GetInstance()->getWindowHeight()));
+    
+    background = al_load_bitmap("./data/textures/backgrounds/01.png");
+    if (background == NULL) {
+        throw std::runtime_error("Missing texture!");
+
+    }
+    
+    CharacterPtr character1 = std::make_shared<Character>();
+    character1->setPosition(Vector2(-150, 200));
+    world->addEntity(character1);
+    
+    CharacterPtr character2 = std::make_shared<Character>();
+    character2->setPosition(Vector2(150, 200));
+    world->addEntity(character2);
 }
 
 void PlayState::onExit(GameStateManagerPtr manager) {
-
+    al_destroy_bitmap(background);
+    world.reset();
 }
 
 void PlayState::handleInput(
@@ -59,27 +83,28 @@ void PlayState::handleInput(
     
     if (inputHandler->isKeyPressed(ALLEGRO_KEY_ESCAPE)) {
         exit(manager);
+    } else if (inputHandler->isKeyPressed(ALLEGRO_KEY_LEFT)) {
+        camera->moveBy(Vector2(100, 0));
+    } else if (inputHandler->isKeyPressed(ALLEGRO_KEY_RIGHT)) {
+        camera->moveBy(Vector2(-100, 0));
     }
     
+    world->handleInput(inputHandler, dt);
 }
 
 void PlayState::update(
                        GameStateManagerPtr  manager,
                        float                dt) {
-    timer.update(dt);
-    testTimer.update(dt);
+    world->update(dt);
+    camera->update(dt);
     comboManager->update(dt);
 }
 
 void PlayState::draw(GameStateManagerPtr    manager,
                      ALLEGRO_DISPLAY        *display) {
     
-    al_draw_filled_circle(Interpolation<float>::Exponential(timer.getNormalizedTime(), 50, 400, EaseInOut),
-                          50,
-                          20,
-                          al_map_rgb(Interpolation<unsigned char>::Exponential(timer.getNormalizedTime(), 255, 0, EaseInOut),
-                                     Interpolation<unsigned char>::Exponential(timer.getNormalizedTime(), 0, 255, EaseInOut),
-                                     0));
+    al_draw_bitmap(background, (Application::GetInstance()->getWindowWidth() - 1600) / 2 + camera->getPosition().x, 0, 0);
+    world->draw(display, camera);
     
     if (currentState == TransitionIn) {
         al_draw_filled_rectangle(0,
@@ -94,7 +119,6 @@ void PlayState::draw(GameStateManagerPtr    manager,
                                  Application::GetInstance()->getWindowHeight(),
                                  al_map_rgba_f(0, 0, 0, Interpolation<float>::Linear(transitionTimer.getNormalizedTime(), 0, 1)));
     }
-    
 }
 
 GameStatePtr PlayState::GetInstance() {

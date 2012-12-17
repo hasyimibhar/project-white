@@ -21,13 +21,23 @@ namespace AllegroFighters {
 typedef std::shared_ptr<AllegroFighters::ControlsManager> ControlsManagerPtr;
 typedef std::shared_ptr<AllegroFighters::Combo> ComboPtr;
 typedef std::shared_ptr<AllegroFighters::ComboManager> ComboManagerPtr;
+struct ALLEGRO_BITMAP;
+
+namespace AllegroFighters {
+    class World;
+    class Camera;
+}
+
+typedef std::shared_ptr<AllegroFighters::World> WorldPtr;
+typedef std::shared_ptr<AllegroFighters::Camera> CameraPtr;
 
 class PlayState : public BaseGameState {
 
 private:
-    DeltaTimer timer;
-    DeltaTimer testTimer;
+    WorldPtr        world;
+    CameraPtr       camera;
     ControlsManagerPtr controlsManager;
+    ALLEGRO_BITMAP  *background;
     ComboManagerPtr comboManager;
     
 public:
