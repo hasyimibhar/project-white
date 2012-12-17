@@ -62,13 +62,13 @@ void PlayState::onEnter(GameStateManagerPtr manager) {
 
     }
     
-    CharacterPtr character1 = std::make_shared<Character>();
-    character1->setPosition(Vector2(-150, 200));
-    world->addEntity(character1);
+    player1 = std::make_shared<Character>();
+    player1->setPosition(Vector2(-300, World::FloorY));
+    world->addEntity(player1);
     
-    CharacterPtr character2 = std::make_shared<Character>();
-    character2->setPosition(Vector2(150, 200));
-    world->addEntity(character2);
+    player2 = std::make_shared<Character>();
+    player2->setPosition(Vector2(300, World::FloorY));
+    world->addEntity(player2);
 }
 
 void PlayState::onExit(GameStateManagerPtr manager) {
@@ -83,10 +83,18 @@ void PlayState::handleInput(
     
     if (inputHandler->isKeyPressed(ALLEGRO_KEY_ESCAPE)) {
         exit(manager);
-    } else if (inputHandler->isKeyPressed(ALLEGRO_KEY_LEFT)) {
-        camera->moveBy(Vector2(100, 0));
-    } else if (inputHandler->isKeyPressed(ALLEGRO_KEY_RIGHT)) {
-        camera->moveBy(Vector2(-100, 0));
+    }
+    
+    if (controlsManager->isKeyPressed(inputHandler, GameCommandJump)) {
+        player1->jump();
+    }
+    
+    if (controlsManager->isKeyDown(inputHandler, GameCommandMoveLeft)) {
+        player1->move(Left);
+    } else if (controlsManager->isKeyDown(inputHandler, GameCommandMoveRight)) {
+        player1->move(Right);
+    } else {
+        player1->stop();
     }
     
     world->handleInput(inputHandler, dt);

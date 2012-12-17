@@ -15,14 +15,29 @@ namespace AllegroFighters {
     class Character;
     typedef std::shared_ptr<Character> CharacterPtr;
     
+    enum Direction {
+        Left = -1,
+        Right = 1
+    };
+    
     class Character : public BaseEntity {
+    private:
+        Vector2 velocity;
+        bool isJumping;
+        
     public:
+        static const float JumpSpeed;
+        static const float MoveSpeed;
+        
         Character();
         ~Character();
         
-        void handleInput(InputHandlerPtr inputHandler, float dt);
         void update(float dt);
         void draw(ALLEGRO_DISPLAY *display, CameraPtr camera);
+        
+        void jump();
+        void move(Direction direction);
+        void stop();
     };
 }
 

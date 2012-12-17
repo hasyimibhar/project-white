@@ -26,10 +26,12 @@ struct ALLEGRO_BITMAP;
 namespace AllegroFighters {
     class World;
     class Camera;
+    class Character;
 }
 
 typedef std::shared_ptr<AllegroFighters::World> WorldPtr;
 typedef std::shared_ptr<AllegroFighters::Camera> CameraPtr;
+typedef std::shared_ptr<AllegroFighters::Character> CharacterPtr;
 
 class PlayState : public BaseGameState {
 
@@ -39,6 +41,8 @@ private:
     ControlsManagerPtr controlsManager;
     ALLEGRO_BITMAP  *background;
     ComboManagerPtr comboManager;
+    
+    CharacterPtr    player1, player2;
     
 public:
     PlayState();

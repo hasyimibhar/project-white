@@ -10,13 +10,16 @@
 #include "InputHandler.h"
 #include "Entity.h"
 #include "Camera.h"
+#include "Application.h"
 
 #include <allegro5/allegro.h>
+#include <allegro5/allegro_primitives.h>
 #include <algorithm>
 
 using namespace AllegroFighters;
 
-const float World::FloorY   = 500.0f;
+const float World::FloorY   = 550.0f;
+const float World::GravityAcceleration = 2000.0f;
 
 World::World(const Size &size) : size(size) {
     
@@ -64,6 +67,8 @@ void World::draw(ALLEGRO_DISPLAY *display, CameraPtr camera) {
     for (auto entity : activeEntityList) {
         entity->draw(display, camera);
     }
+    
+    //al_draw_line(0, FloorY, Application::GetInstance()->getWindowWidth(), FloorY, al_map_rgb(0, 0, 255), 2.0f);
     
 }
 

@@ -38,6 +38,7 @@ namespace AllegroFighters {
         
     public:
         static const float FloorY;
+        static const float GravityAcceleration;
         
         World(const Size &size);
         ~World();

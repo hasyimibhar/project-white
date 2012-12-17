@@ -50,6 +50,10 @@ namespace AllegroFighters {
         }
         
         Vector2 convertToViewCoordinate(const Vector2 &p) const;
+        
+        Vector2 getOffset() const {
+            return Vector2(size.first / 2, 0) + position;
+        }
     };
     
 }

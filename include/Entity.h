@@ -78,7 +78,7 @@ namespace AllegroFighters {
         }
         
         virtual Rect getRect() const {
-            return Rect(Vector2(position.x - size.first / 2, position.y - size.second / 2), size);
+            return Rect(Vector2(position.x - (size.first / 2), position.y - (size.second / 2)), size);
         }
     };
 }
