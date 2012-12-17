@@ -61,6 +61,10 @@ public:
         return windowHeight;
     }
     
+    InputHandlerPtr getInputHandler() const {
+        return inputHandler;
+    }
+    
     static ApplicationPtr GetInstance();
 };
 

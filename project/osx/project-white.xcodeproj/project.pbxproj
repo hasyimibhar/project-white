@@ -10,6 +10,7 @@
 		1C01A661167C242000B49A3F /* GameStateManager.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 1C01A660167C242000B49A3F /* GameStateManager.cpp */; };
 		1C01A66A167C2A3300B49A3F /* PlayState.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 1C01A669167C2A3300B49A3F /* PlayState.cpp */; };
 		1C01A66D167C2EA000B49A3F /* InputHandler.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 1C01A66C167C2EA000B49A3F /* InputHandler.cpp */; };
+		1C2C593B167EB0C100A897B1 /* GameControls.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 1C2C593A167EB0C100A897B1 /* GameControls.cpp */; };
 		1C54AB3F16773BC10094193A /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1C54AB3E16773BC10094193A /* Cocoa.framework */; };
 		1C54AB6816773C700094193A /* AllegroAcodec-5.0.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1C54AB5C16773C700094193A /* AllegroAcodec-5.0.framework */; };
 		1C54AB6916773C700094193A /* AllegroAudio-5.0.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1C54AB5D16773C700094193A /* AllegroAudio-5.0.framework */; };
@@ -73,6 +74,8 @@
 		1C01A66C167C2EA000B49A3F /* InputHandler.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = InputHandler.cpp; sourceTree = "<group>"; };
 		1C01A66E167C670900B49A3F /* DeltaTimer.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DeltaTimer.h; sourceTree = "<group>"; };
 		1C01A66F167C6BAE00B49A3F /* Interpolation.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Interpolation.h; sourceTree = "<group>"; };
+		1C2C5938167EB0B600A897B1 /* GameControls.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = GameControls.h; sourceTree = "<group>"; };
+		1C2C593A167EB0C100A897B1 /* GameControls.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = GameControls.cpp; sourceTree = "<group>"; };
 		1C54AB3A16773BC10094193A /* project-white.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "project-white.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		1C54AB3E16773BC10094193A /* Cocoa.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Cocoa.framework; path = System/Library/Frameworks/Cocoa.framework; sourceTree = SDKROOT; };
 		1C54AB4116773BC10094193A /* AppKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AppKit.framework; path = System/Library/Frameworks/AppKit.framework; sourceTree = SDKROOT; };
@@ -195,6 +198,7 @@
 				1C01A660167C242000B49A3F /* GameStateManager.cpp */,
 				1C01A669167C2A3300B49A3F /* PlayState.cpp */,
 				1C01A66C167C2EA000B49A3F /* InputHandler.cpp */,
+				1C2C593A167EB0C100A897B1 /* GameControls.cpp */,
 			);
 			name = src;
 			path = ../../../src;
@@ -211,6 +215,7 @@
 				1C01A66B167C2DEB00B49A3F /* InputHandler.h */,
 				1C01A66E167C670900B49A3F /* DeltaTimer.h */,
 				1C01A66F167C6BAE00B49A3F /* Interpolation.h */,
+				1C2C5938167EB0B600A897B1 /* GameControls.h */,
 			);
 			name = include;
 			path = ../../../include;
@@ -285,7 +290,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "echo \"Copying data files...\"\nmkdir -p $BUILT_PRODUCTS_DIR/data\ncp $PROJECT_DIR/../../data/* $BUILT_PRODUCTS_DIR/data";
+			shellScript = "echo \"Copying data files...\"\nmkdir -p $BUILT_PRODUCTS_DIR/data\ncp -r $PROJECT_DIR/../../data/* $BUILT_PRODUCTS_DIR/data";
 		};
 /* End PBXShellScriptBuildPhase section */
 
@@ -299,6 +304,7 @@
 				1C01A661167C242000B49A3F /* GameStateManager.cpp in Sources */,
 				1C01A66A167C2A3300B49A3F /* PlayState.cpp in Sources */,
 				1C01A66D167C2EA000B49A3F /* InputHandler.cpp in Sources */,
+				1C2C593B167EB0C100A897B1 /* GameControls.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

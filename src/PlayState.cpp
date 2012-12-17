@@ -10,6 +10,9 @@
 #include "Interpolation.h"
 #include <allegro5/allegro_primitives.h>
 #include "Application.h"
+#include "GameControls.h"
+
+using namespace AllegroFighters;
 
 PlayState::PlayState() {
     transitionInInterval = 2.0f;
@@ -21,6 +24,8 @@ PlayState::~PlayState() {
 }
 
 void PlayState::onEnter(GameStateManagerPtr manager) {
+    controlsManager = std::make_shared<ControlsManager>("./data/config.ini");
+    
     timer.setTimeInterval(2.0f);
     testTimer.setTimeInterval(5.0f);
 }
@@ -35,6 +40,8 @@ void PlayState::handleInput(
                             float               dt) {
     
     if (inputHandler->isKeyPressed(ALLEGRO_KEY_ESCAPE)) {
+        exit(manager);
+    } else if (controlsManager->isKeyPressed(inputHandler, GameCommandPunch)) {
         exit(manager);
     }
     
