@@ -8,7 +8,6 @@
 
 #include "Camera.h"
 #include "Elves.h"
-#include "World.h"
 #include "Interpolation.h"
 #include "Entity.h"
 
@@ -16,19 +15,16 @@
 
 using namespace AllegroFighters;
 
-const float Camera::MoveDuration = 1.0f;
+const float Camera::MoveDuration = 0.2f;
 
-Camera::Camera(WorldPtr world, const Size &size)
-: world(world)
-, size(size)
+Camera::Camera(const Size &size, const Size &panSize)
+: size(size)
+, panSize(panSize)
 , position(Vector2())
 , start(position)
-, target(position) {
-    // World must not be null
-    assert(world != nullptr);
-    
+, target(position) {    
     // Size must be smaller than the world's
-    assert(size.first <= world->getSize().first && size.second <= world->getSize().second);
+    assert(size.first <= panSize.first && size.second <= panSize.second);
     
     moveTimer.setTimeInterval(MoveDuration);
 }
@@ -36,8 +32,8 @@ Camera::Camera(WorldPtr world, const Size &size)
 void Camera::moveTo(const Vector2 &target) {
     start = position;
     this->target = clamp(target,
-                         Vector2((size.first / 2) - (world->getSize().first / 2), 0),
-                         Vector2((world->getSize().first / 2) - (size.first / 2), 0));
+                         Vector2((size.first / 2) - (panSize.first / 2), 0),
+                         Vector2((panSize.first / 2) - (size.first / 2), 0));
     
     moveTimer.setTimeInterval(MoveDuration);
 }

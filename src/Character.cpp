@@ -40,6 +40,12 @@ void Character::update(float dt) {
         position.y = World::FloorY - size.second / 2;
         isJumping = false;
     }
+    
+    if (position.x - size.first / 2 < -world->getSize().first / 2) {
+        position.x = (-world->getSize().first / 2) + (size.first / 2);
+    } else if (position.x + size.first / 2 > world->getSize().first / 2) {
+        position.x = (world->getSize().first / 2) - (size.first / 2);
+    }
 }
 
 void Character::draw(ALLEGRO_DISPLAY *display, CameraPtr camera) {

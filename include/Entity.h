@@ -41,6 +41,8 @@ namespace AllegroFighters {
         
         virtual void onAdd() {}
         virtual void onRemove() {}
+        
+        virtual void eject(const Vector2 &v) = 0;
     };
     
     class BaseEntity : public IEntity, public std::enable_shared_from_this<BaseEntity> {
@@ -79,6 +81,10 @@ namespace AllegroFighters {
         
         virtual Rect getRect() const {
             return Rect(Vector2(position.x - (size.first / 2), position.y - (size.second / 2)), size);
+        }
+        
+        void eject(const Vector2 &v) {
+            position += v;
         }
     };
 }

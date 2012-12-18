@@ -26,13 +26,19 @@ namespace AllegroFighters {
     class IEntity;
     typedef std::shared_ptr<IEntity> EntityPtr;
     
+    class Character;
+    typedef std::shared_ptr<Character> CharacterPtr;
+    
     typedef std::list<EntityPtr> EntityList;
  
     // The world where the fighters rumble!
     class World : public std::enable_shared_from_this<World> {
     private:
         const Size size;
+        
         EntityList activeEntityList, newEntityList, deadEntityList;
+        CharacterPtr player1, player2;
+        CameraPtr camera;
         
         void processQueuedEntities();
         
@@ -40,8 +46,11 @@ namespace AllegroFighters {
         static const float FloorY;
         static const float GravityAcceleration;
         
-        World(const Size &size);
+        World(const Size &size, CameraPtr camera);
         ~World();
+        
+        void setPlayer1(CharacterPtr player1);
+        void setPlayer2(CharacterPtr player1);
         
         void handleInput(InputHandlerPtr inputHandler, float dt);
         void update(float dt);

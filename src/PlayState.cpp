@@ -53,8 +53,8 @@ void PlayState::onEnter(GameStateManagerPtr manager) {
                            );
     combo1->addDelegate(&Test);
     
-    world = std::make_shared<World>(MakeSize(1600, 600));
-    camera = std::make_shared<Camera>(world, MakeSize(Application::GetInstance()->getWindowWidth(), Application::GetInstance()->getWindowHeight()));
+    camera = std::make_shared<Camera>(MakeSize(Application::GetInstance()->getWindowWidth(), Application::GetInstance()->getWindowHeight()), MakeSize(1600, 600));
+    world = std::make_shared<World>(MakeSize(1600, 600), camera);
     
     background = al_load_bitmap("./data/textures/backgrounds/01.png");
     if (background == NULL) {
@@ -63,12 +63,12 @@ void PlayState::onEnter(GameStateManagerPtr manager) {
     }
     
     player1 = std::make_shared<Character>();
-    player1->setPosition(Vector2(-300, World::FloorY));
-    world->addEntity(player1);
+    player1->setPosition(Vector2(0, World::FloorY));
+    world->setPlayer1(player1);
     
     player2 = std::make_shared<Character>();
-    player2->setPosition(Vector2(300, World::FloorY));
-    world->addEntity(player2);
+    player2->setPosition(Vector2(200, World::FloorY));
+    world->setPlayer2(player2);
 }
 
 void PlayState::onExit(GameStateManagerPtr manager) {
@@ -97,6 +97,18 @@ void PlayState::handleInput(
         player1->stop();
     }
     
+    if (inputHandler->isKeyPressed(ALLEGRO_KEY_I)) {
+        player2->jump();
+    }
+    
+    if (inputHandler->isKeyDown(ALLEGRO_KEY_J)) {
+        player2->move(Left);
+    } else if (inputHandler->isKeyDown(ALLEGRO_KEY_L)) {
+        player2->move(Right);
+    } else {
+        player2->stop();
+    }
+    
     world->handleInput(inputHandler, dt);
 }
 
@@ -111,7 +123,7 @@ void PlayState::update(
 void PlayState::draw(GameStateManagerPtr    manager,
                      ALLEGRO_DISPLAY        *display) {
     
-    al_draw_bitmap(background, (Application::GetInstance()->getWindowWidth() - 1600) / 2 + camera->getPosition().x, 0, 0);
+    al_draw_bitmap(background, camera->getOffset().x - al_get_bitmap_width(background) / 2, 0, 0);
     world->draw(display, camera);
     
     if (currentState == TransitionIn) {

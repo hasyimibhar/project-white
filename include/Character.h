@@ -38,6 +38,10 @@ namespace AllegroFighters {
         void jump();
         void move(Direction direction);
         void stop();
+        
+        Vector2 getVelocity() const {
+            return velocity;
+        }
     };
 }
 

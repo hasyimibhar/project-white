@@ -20,8 +20,6 @@ namespace AllegroFighters {
     
     class Camera {
     private:
-        WorldPtr world;
-        
         // {0, 0} means the center
         Vector2 position;
         
@@ -32,14 +30,14 @@ namespace AllegroFighters {
         Vector2 target;
         
         // The view size
-        Size    size;
+        Size    size, panSize;
         
         DeltaTimer moveTimer;
         
     public:
         static const float MoveDuration;
         
-        Camera(WorldPtr world, const Size &size);
+        Camera(const Size &size, const Size &panSize);
         
         void moveTo(const Vector2 &target);
         void moveBy(const Vector2 &delta);
@@ -52,7 +50,11 @@ namespace AllegroFighters {
         Vector2 convertToViewCoordinate(const Vector2 &p) const;
         
         Vector2 getOffset() const {
-            return Vector2(size.first / 2, 0) + position;
+            return Vector2(size.first / 2, 0) - position;
+        }
+        
+        Size getSize() const {
+            return size;
         }
     };
     
